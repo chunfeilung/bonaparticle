@@ -1,0 +1,34 @@
+%Filename: t1lfrx.fd
+%Created by: tex lfr_fnst
+%Created using fontinst v1.928
+
+%THIS FILE SHOULD BE PUT IN A TEX INPUTS DIRECTORY
+
+\ProvidesFile{t1lfrx.fd}
+   [2005/08/08 Fontinst v1.928 font definitions for T1/lfrx.]
+
+\DeclareFontFamily{T1}{lfrx}{\hyphenchar \font ="7F}
+
+\DeclareFontShape{T1}{lfrx}{m}{n}{
+   <-> lfrr9e
+}{}
+
+\DeclareFontShape{T1}{lfrx}{m}{it}{
+   <-> lfrri9e
+}{}
+
+\DeclareFontShape{T1}{lfrx}{b}{n}{
+   <-> lfrb9e
+}{}
+
+\DeclareFontShape{T1}{lfrx}{b}{it}{
+   <-> lfrbi9e
+}{}
+
+\DeclareFontShape{T1}{lfrx}{m}{sl}{<->ssub * lfrx/m/it}{}
+\DeclareFontShape{T1}{lfrx}{bx}{n}{<->ssub * lfrx/b/n}{}
+\DeclareFontShape{T1}{lfrx}{bx}{it}{<->ssub * lfrx/b/it}{}
+\DeclareFontShape{T1}{lfrx}{b}{sl}{<->ssub * lfrx/b/it}{}
+\DeclareFontShape{T1}{lfrx}{bx}{sl}{<->ssub * lfrx/b/sl}{}
+
+\endinput

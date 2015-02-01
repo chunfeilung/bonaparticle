@@ -1,0 +1,11 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{frutiger}
+    [2005/08/08 v1.2 Style file for Linotype Frutiger]
+\RequirePackage[T1]{fontenc}
+\RequirePackage{textcomp}
+\DeclareOption{lining}{\renewcommand*{\rmdefault}{lfrx}}
+\DeclareOption{oldstyle}{\renewcommand*{\rmdefault}{lfrj}}
+\ExecuteOptions{oldstyle}
+\ProcessOptions\relax
+%%
+%% End of file 'frutiger.sty'

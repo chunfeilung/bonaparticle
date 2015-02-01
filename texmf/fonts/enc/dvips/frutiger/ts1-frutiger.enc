@@ -1,0 +1,82 @@
+/TS1Encoding-frutiger [
+% 0x0000
+ /capitalgrave /capitalacute /capitalcircumflex /capitaltilde
+ /capitaldieresis /capitalhungarumlaut /capitalring /capitalcaron
+ /capitalbreve /capitalmacron /capitaldotaccent /index0xDC
+ /index0xDE /index0xC3 /.notdef /.notdef
+% 0x0010
+ /.notdef /.notdef /index0xC4 /.notdef
+ /.notdef /twelveudash /threequartersemdash /capitalcompwordmark
+ /index0x0195 /index0x0197 /tieaccentlowercase /tieaccentcapital
+ /newtieaccentlowercase /newtieaccentcapital /.notdef /ascendercompwordmark
+% 0x0020
+ /blank /.notdef /.notdef /.notdef
+ /index0x07 /.notdef /.notdef /index0x0A
+ /.notdef /.notdef /asteriskcentered /.notdef
+ /index0x0F /hyphendbl /index0x11 /index0xBB
+% 0x0030
+ /zerooldstyle /oneoldstyle /twooldstyle /threeoldstyle
+ /fouroldstyle /fiveoldstyle /sixoldstyle /sevenoldstyle
+ /eightoldstyle /nineoldstyle /.notdef /.notdef
+ /angbracketleft /index0xED /angbracketright /.notdef
+% 0x0040
+ /.notdef /.notdef /.notdef /.notdef
+ /.notdef /.notdef /.notdef /.notdef
+ /.notdef /.notdef /.notdef /.notdef
+ /.notdef /Omegainv /.notdef /bigcircle
+% 0x0050
+ /.notdef /.notdef /.notdef /.notdef
+ /.notdef /.notdef /.notdef /index0x9F
+ /.notdef /.notdef /.notdef /openbracketleft
+ /.notdef /openbracketright /index0x0196 /index0x0198
+% 0x0060
+ /asciigrave /.notdef /born /divorced
+ /died /.notdef /.notdef /.notdef
+ /.notdef /.notdef /.notdef /.notdef
+ /leaf /married /index0x0342 /.notdef
+% 0x0070
+ /.notdef /.notdef /.notdef /.notdef
+ /.notdef /.notdef /.notdef /.notdef
+ /.notdef /.notdef /.notdef /.notdef
+ /.notdef /.notdef /tildelow /hyphendblchar
+% 0x0080
+ /asciibreve /asciicaron /asciiacutedbl /asciigravedbl
+ /index0x82 /index0xC1 /bardbl /index0xC5
+ /index0x87 /centigrade /dollaroldstyle /centoldstyle
+ /index0xA6 /colonmonetary /won /naira
+% 0x0090
+ /guarani /peso /lira /recipe
+ /interrobang /interrobangdown /dong /index0x8C
+ /pertenthousand /pilcrow /baht /numero
+ /discount /estimated /openbullet /servicemark
+% 0x00a0
+ /quillbracketleft /quillbracketright /index0x84 /index0x85
+ /index0xF5 /index0x96 /index0xE6 /index0x86
+ /asciidieresis /index0x8B /index0x9D /copyleft
+ /index0xA4 /circledP /index0x8A /asciimacron
+% 0x00b0
+ /index0x83 /index0x93 /index0xF0 /index0xF1
+ /asciiacute /index0x97 /index0x88 /index0xF7
+ /referencemark /index0xEF /index0x9E /index0xA5
+ /index0xF3 /index0xF2 /index0xF4 /index0xBC
+% 0x00c0
+ /.notdef /.notdef /.notdef /.notdef
+ /.notdef /.notdef /.notdef /.notdef
+ /.notdef /.notdef /.notdef /.notdef
+ /.notdef /.notdef /.notdef /.notdef
+% 0x00d0
+ /.notdef /.notdef /.notdef /.notdef
+ /.notdef /.notdef /index0xEE /.notdef
+ /.notdef /.notdef /.notdef /.notdef
+ /.notdef /.notdef /.notdef /.notdef
+% 0x00e0
+ /.notdef /.notdef /.notdef /.notdef
+ /.notdef /.notdef /.notdef /.notdef
+ /.notdef /.notdef /.notdef /.notdef
+ /.notdef /.notdef /.notdef /.notdef
+% 0x00f0
+ /.notdef /.notdef /.notdef /.notdef
+ /.notdef /.notdef /index0xB7 /.notdef
+ /.notdef /.notdef /.notdef /.notdef
+ /.notdef /.notdef /.notdef /.notdef
+] def
