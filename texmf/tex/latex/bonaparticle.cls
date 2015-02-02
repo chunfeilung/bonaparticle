@@ -185,13 +185,13 @@
 % defined a few lines earlier (up there ^)
 \RequirePackage[
     paperheight=\geometrypaperheight,
-    paperwidth=\geometrypaperwidth,
-    textheight=\geometrytextheight,
-    textwidth=\geometrytextwidth,
-    top=\geometrytop,
-    bottom=\geometrybottom,
-    left=\geometryleft,
-    right=\geometryright
+    paperwidth =\geometrypaperwidth,
+    textheight =\geometrytextheight,
+    textwidth  =\geometrytextwidth,
+    top        =\geometrytop,
+    bottom     =\geometrybottom,
+    left       =\geometryleft,
+    right      =\geometryright
 ]{geometry}
 
 
@@ -524,9 +524,10 @@
 
 
 % Variables that should only be set once per issue
-\newcommand{\themagazinename }{Bonaparticle}
-\newcommand{\themagazinetheme}{Undefined theme}
-\newcommand{\themagazineissue}{January 1970}
+\newcommand{\themagazinename  }{Bonaparticle}
+\newcommand{\themagazinetheme }{Undefined theme}
+\newcommand{\themagazinevolume}{0}
+\newcommand{\themagazineissue }{0}
 
 
 % Variables that can be set for each article
@@ -786,7 +787,7 @@
             \quad
             \themagazinename
             \quad
-            \textbf{\themagazineissue}
+            \textbf{Volume \themagazinevolume, Issue \themagazineissue}
         }
         \ifprint
             \begin{picture}(0, 0)(-257,5){}
@@ -910,7 +911,6 @@
 % Suppress table of contents title and add our own
 \makeatletter
 \renewcommand\tableofcontents{
-    \setcounter{page}{0}
     \chapter*{\vspace{-.75\baselineskip}\thetableofcontentstitle}
     \vspace{-2\baselineskip}
     \@starttoc{toc}
@@ -980,6 +980,12 @@
 % \themagazinetheme
 \newcommand{\magazinetheme}[1]{
     \renewcommand{\themagazinetheme}{#1}
+}
+
+
+% \themagazinevolume
+\newcommand{\magazinevolume}[1]{
+    \renewcommand{\themagazinevolume}{#1}
 }
 
 
