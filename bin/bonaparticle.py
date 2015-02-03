@@ -9,6 +9,9 @@ from os.path import isfile
 
 
 
+DEFAULT_MASTER_FILE = 'Master.tex'
+
+
 # Create a new BonapartechnicalEditor instance
 editor = core.BonapartechnicalEditor()
 
@@ -19,10 +22,14 @@ editor.assign_task(images.PrintConversionTask())
 
 if len(argv) > 1:
     file_name = argv[1]
+    if isfile(file_name):
+        editor.process(file_name)
+    else:
+        editor.error("\n" + file_name + " doesn't exist")
 else:
-    file_name = 'Master.tex'
-
-if isfile(file_name):
-    editor.process(file_name)
-else:
-    editor.error(file_name + " doesn't exist")
+    if isfile(DEFAULT_MASTER_FILE):
+        editor.process(DEFAULT_MASTER_FILE)
+    else:
+        editor.error(
+            "\nPlease supply " + DEFAULT_MASTER_FILE + " or another file name"
+        )
