@@ -406,6 +406,7 @@
     \title     {***INSERT TITLE HERE***}
     \subtitle  {\vspace{-.2\baselineskip}} % Prevent awkward whitespace
     \author    {}
+    \date      {\today}
     \genrecolor{black}
 
     % Using \thisheadercolor and \thisfootercolor won't work here
@@ -536,6 +537,7 @@
 \newcommand{\theshortenedtitle}{} % Not supposed to directly set by users
 \newcommand{\thesubtitle      }{} % Prevent awkward whitespace
 \newcommand{\theauthor        }{}
+\newcommand{\thedate          }{}
 
 
 % These values will be redefined by \resetbonaparticlevariables.
@@ -1077,6 +1079,12 @@
 % Set the article author(s)
 \renewcommand{\author}[1]{
     \renewcommand{\theauthor}{#1}
+}
+
+
+% Set the date
+\renewcommand{\date}[1]{
+    \renewcommand{\thedate}{#1}
 }
 
 
