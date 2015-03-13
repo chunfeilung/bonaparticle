@@ -28,6 +28,18 @@
 % editors with some rather mundane tasks such as automatic checking and 
 % conversion of used graphics, and exporting to HTML/EPUB versions. bonaparticle
 % also functions perfectly fine as a standalone class however.
+%
+% This class was created with several goals:
+% - To offer an easy and somewhat idiot-proof interface to those who need to
+%   create reasonably-looking magazines with lots of images
+% - To offer an easy interface to those who are tasked with the creation of a
+%   custom-made LaTeX class, but don’t want to spend much time doing that
+% - So I finally have something to put on my GitHub account (even though I
+%   technically never use (La)TeX, so this is kind of not very representative
+%   of what I actually doing)
+%
+%
+%     -- Chun Fei Lung
 
 
 
@@ -40,7 +52,7 @@
 \NeedsTeXFormat{LaTeX2e}
 
 \ProvidesClass{bonaparticle}[
-    2015/02/01
+    2015/03/11
     I definitely should've named this the magazine class.
 ]
 
@@ -155,6 +167,8 @@
 % that I don't really know what it does nor should I have to know)
 \ExecuteOptions{}
 \ProcessOptions
+
+
 
 
 % ---------------------------------------------------------------------------- %
@@ -293,6 +307,8 @@
 }
 
 
+
+
 %    X e T e X
 %    - - - - -
 
@@ -315,6 +331,8 @@
     % languages.
     % \RequirePackage[<language(s)>]{babel}
 \fi
+
+
 
 
 %    p r i n t
@@ -532,12 +550,13 @@
 
 
 % Variables that can be set for each article
-\newcommand{\thegenre         }{}
-\newcommand{\thetitle         }{}
-\newcommand{\theshortenedtitle}{} % Not supposed to directly set by users
-\newcommand{\thesubtitle      }{} % Prevent awkward whitespace
-\newcommand{\theauthor        }{}
-\newcommand{\thedate          }{}
+\newcommand{\thegenre          }{}
+\newcommand{\thetitle          }{}
+\newcommand{\theshortenedtitle }{} % Not to be directly set by users
+\newcommand{\thesubtitle       }{} % Prevent awkward whitespace
+\newcommand{\theauthor         }{}
+\newcommand{\theshortenedauthor}{} % Not to be directly set by users
+\newcommand{\thedate           }{}
 
 
 % These values will be redefined by \resetbonaparticlevariables.
@@ -771,6 +790,9 @@
         }{}
         \textbf{\thegenre}
     }
+
+    % This sets the thickness of the line below the header
+    \renewcommand{\headrulewidth}{0.5pt}
 }
 
 
@@ -833,9 +855,6 @@
 
     % This sets the distance between the header and the body text
     \setlength{\headsep}{0.5cm}
-
-    % This sets the thickness of the line below the header
-    \renewcommand{\headrulewidth}{0.5pt}
 }
 
 
@@ -1077,8 +1096,20 @@
 
 
 % Set the article author(s)
-\renewcommand{\author}[1]{
-    \renewcommand{\theauthor}{#1}
+\renewcommand{\author}[2]{
+    \renewcommand{\theauthor}{#2}
+
+    \ifstrequal{#1}{}{
+        \renewcommand{\theshortenedauthor}{#2}
+    }{
+        \renewcommand{\theshortenedauthor}{#1}        
+    }
+}
+
+
+% This should be set using \author[<shortenedauthor>]{<full list of authors>}
+\newcommand{\shortenedauthor}[1]{
+    \renewcommand{\theshortenedauthor}{#1}
 }
 
 
@@ -1161,6 +1192,12 @@
 
 
 % Insert a full-page image as a background.
+
+%  +- Example ----------------------------------+
+%  |                                            |
+%  |  \coverart}{beautiful-teapot.pdf}{15}{15}  |
+%  |                                            |
+%  +--------------------------------------------+
 \newcommand{\coverart}[1]{
     \AddToShipoutPicture*{
         \put(0,-10.5)
@@ -1182,6 +1219,12 @@
 
 
 % The magazine's front page. Somewhat similar to \coverart
+%
+%  +- Example ---------------------------------+
+%  |                                           |
+%  |  \frontpage}{girl-next-door.pdf}{15}{15}  |
+%  |                                           |
+%  +-------------------------------------------+
 \newcommand{\frontpage}[3]{
     \includepdf[
         noautoscale,
@@ -1195,11 +1238,124 @@
 
 
 % Technically an alias for \frontpage, but has slightly different semantics.
+%
+%  +- Example ---------------------------------------+
+%  |                                                 |
+%  |  \fullpageadvertisement}{deloitte.pdf}{15}{15}  |
+%  |                                                 |
+%  +-------------------------------------------------+
 \newcommand{\fullpageadvertisement}[3]{
     \clearpage
     \newpage
     \frontpage{#1}{#2}{#3}
 }
+
+
+% Another variation for full-page images that should be listed in the table of
+% contents.
+%
+%  +- Example ------------------------------------------------------------+
+%  |                                                                      |
+%  |  \fullpagefeaturedimage{cartoon-2015-02}{5}{5}{Cartoon of the Week}  |
+%  |                                                                      |
+%  +----------------------------------------------------------------------+
+\newcommand{\fullpagefeaturedimage}[4]{
+    \clearpage
+    \begin{minipage}{\paperwidth}
+        \placetitle{#4}{}
+        \includepdf[
+            noautoscale,
+            width=\paperwidth+#2mm,
+            height=\paperheight+#3mm
+        ]
+        {#1}
+    \end{minipage}
+}
+
+
+% Add a marginless image that takes up the entire paper width.
+%
+%  +- Example -----------------------------------------+
+%  |                                                   |
+%  |  \fullwidthimage{image-on-upper-half-of-page}{t}  |
+%  |  <your other content>                             |
+%  |                                                   |
+%  +---------------------------------------------------+
+
+%  +- Example -----------------------------------------+
+%  |                                                   |
+%  |  <your other content>                             |
+%  |  \fullwidthimage{image-on-upper-half-of-page}{b}  |
+%  |                                                   |
+%  +---------------------------------------------------+
+\newcommand{\fullwidthimage}[2]{
+    \ifstrequal{#2}{t}{
+        % Measure the height of the image when we set its width to \paperwidth
+        \def\mygraphic{\includegraphics[draft,width=\paperwidth+5mm]{#1}}
+        \newlength\imageheight
+        \setlength\imageheight{\heightof{\phantom{\mygraphic}} - 1.5cm}
+        
+        % Actually placing the image. The reason we don't simply use
+        % \includegraphics, is because we want the header to have a higher
+        % z-index than the image.
+        \AddToShipoutPicture*{
+            \AtPageUpperLeft
+            {
+                \hspace{-4.5mm}
+                \parbox[t]
+                {\paperwidth+5mm}
+                {
+                    \vspace{-3.5mm}
+                    \centering
+                    \includegraphics[
+                    width=\paperwidth+5mm
+                    ]{#1}%
+                }
+            }
+        }
+        
+        ~\vspace{\imageheight}
+
+    }{
+        \begin{figure*}[b!]
+            % Without this, text will be overlaid on top of the image, which
+            % is not what we want!
+            \phantom{
+                \includegraphics[
+                    draft,
+                    width=\textwidth,
+                    height=\imageheight
+                ]
+                {#1}
+            }
+
+            % Actually placing the image. The reason we don't simply use
+            % \includegraphics, is because we want the footer to have a higher
+            % z-index than the image.
+            \AddToShipoutPicture*{
+                {
+                    \hspace{-4.5mm}
+                    \parbox[b]
+                    {\paperwidth+5mm}
+                    {
+                        \centering
+                        ~\vspace{-3.5mm}
+                        \includegraphics[
+                        width=\paperwidth+5mm
+                        ]{#1}%
+                    }
+                }
+            }
+        \end{figure*}
+    }
+}
+
+
+
+
+%    M i s c e l l a n e o u s
+%    - - - - - - - - - - - - -
+% This section should've been deleted commits ago.
 
 
 % This pretty prints an ASCII panda to the file, but otherwise doesn't really
@@ -1308,6 +1464,7 @@
         \theauthor
         \vspace{.5\baselineskip}
     }
+
 }
 
 
