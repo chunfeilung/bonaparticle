@@ -52,7 +52,7 @@
 \NeedsTeXFormat{LaTeX2e}
 
 \ProvidesClass{bonaparticle}[
-    2015/03/11
+    2015/04/04
     I definitely should've named this the magazine class.
 ]
 
@@ -1096,7 +1096,7 @@
 
 
 % Set the article author(s)
-\renewcommand{\author}[2]{
+\renewcommand{\author}[2][]{
     \renewcommand{\theauthor}{#2}
 
     \ifstrequal{#1}{}{
@@ -1277,7 +1277,7 @@
 %
 %  +- Example -----------------------------------------+
 %  |                                                   |
-%  |  \fullwidthimage{image-on-upper-half-of-page}{t}  |
+%  |  \mimage{image-on-upper-half-of-page}{t}  |
 %  |  <your other content>                             |
 %  |                                                   |
 %  +---------------------------------------------------+
@@ -1289,11 +1289,12 @@
 %  |                                                   |
 %  +---------------------------------------------------+
 \newcommand{\fullwidthimage}[2]{
+    % Measure the height of the image when we set its width to \paperwidth
+    \def\mygraphic{\includegraphics[draft,width=\paperwidth+5mm]{#1}}
+    \newlength\imageheight
+    \setlength\imageheight{\heightof{\phantom{\mygraphic}} - 1.5cm}
+
     \ifstrequal{#2}{t}{
-        % Measure the height of the image when we set its width to \paperwidth
-        \def\mygraphic{\includegraphics[draft,width=\paperwidth+5mm]{#1}}
-        \newlength\imageheight
-        \setlength\imageheight{\heightof{\phantom{\mygraphic}} - 1.5cm}
         
         % Actually placing the image. The reason we don't simply use
         % \includegraphics, is because we want the header to have a higher
@@ -1324,7 +1325,7 @@
                 \includegraphics[
                     draft,
                     width=\textwidth,
-                    height=\imageheight
+                    height=\imageheight - 5mm
                 ]
                 {#1}
             }
