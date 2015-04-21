@@ -52,7 +52,7 @@
 \NeedsTeXFormat{LaTeX2e}
 
 \ProvidesClass{bonaparticle}[
-    2015/04/04
+    2015/04/20
     I definitely should've named this the magazine class.
 ]
 
@@ -267,6 +267,8 @@
     ifthen,
   % Only used for checking whether the document is compiled using XeTeX
     ifxetex,
+  % For redefining commands with optional arguments
+    letltxmacro,
   % Easily insert placeholder texts
     lipsum,
   % Handy for code
@@ -497,6 +499,20 @@
 % Modifying \include so that it correctly sets the graphicspaths
 % for each article
 \let\originalinclude\include
+\LetLtxMacro\originalincludepdf\includepdf
+
+\renewcommand{\includepdf}[2][]{
+    \IfFileExists{./#2.jpg}{
+        \originalincludepdf[#1]{./#2.jpg}
+    }{
+        \IfFileExists{./#2.pdf}{
+            \originalincludepdf[#1]{./#2.pdf}
+        }{
+            \originalincludepdf[#1]{./#2.png}
+        }
+    }
+}
+
 \renewcommand{\include}[1]{
     % Extract the folder and filename of the included article
     \makeatletter
@@ -515,11 +531,87 @@
             {./\articlepath/}
             {./}
         }
+
+        % Let‘s just pretend that this code is some kind of expressionist art,
+        % and not something my three year old nephew could have written.
+        \renewcommand{\includepdf}[2][]{
+            \IfFileExists{./Images/Print/\articlepath/##2.jpg}{
+                \originalincludepdf[##1]{./Images/Print/\articlepath/##2.jpg}
+            }{
+                \IfFileExists{./Images/Print/\articlepath/##2.pdf}{
+                    \originalincludepdf[##1]{./Images/Print/\articlepath/##2.pdf}
+                }{
+                    \IfFileExists{./Images/Print/\articlepath/##2.png}{
+                        \originalincludepdf[##1]{./Images/Print/\articlepath/##2.png}
+                    }{
+                        \IfFileExists{./\articlepath/##2.jpg}{
+                            \originalincludepdf[##1]{./\articlepath/##2.jpg}
+                        }{
+                            \IfFileExists{./\articlepath/##2.pdf}{
+                                \originalincludepdf[##1]{./\articlepath/##2.pdf}
+                            }{
+                                \IfFileExists{./\articlepath/##2.png}{
+                                    \originalincludepdf[##1]{./\articlepath/##2.png}
+                                }{
+                                    \IfFileExists{./##2.jpg}{
+                                        \originalincludepdf[##1]{./##2.jpg}
+                                    }{
+                                        \IfFileExists{./##2.pdf}{
+                                            \originalincludepdf[##1]{./##2.pdf}
+                                        }{
+                                            \originalincludepdf[##1]{./##2.png}
+
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     \else
         \graphicspath{
             {./Images/Screen/\articlepath/}
             {./\articlepath/}
             {./}
+        }
+
+        \renewcommand{\includepdf}[2][]{
+            \IfFileExists{./Images/Screen/\articlepath/##2.jpg}{
+                \originalincludepdf[##1]{./Images/Screen/\articlepath/##2.jpg}
+            }{
+                \IfFileExists{./Images/Screen/\articlepath/##2.pdf}{
+                    \originalincludepdf[##1]{./Images/Screen/\articlepath/##2.pdf}
+                }{
+                    \IfFileExists{./Images/Screen/\articlepath/##2.png}{
+                        \originalincludepdf[##1]{./Images/Screen/\articlepath/##2.png}
+                    }{
+                        \IfFileExists{./\articlepath/##2.jpg}{
+                            \originalincludepdf[##1]{./\articlepath/##2.jpg}
+                        }{
+                            \IfFileExists{./\articlepath/##2.pdf}{
+                                \originalincludepdf[##1]{./\articlepath/##2.pdf}
+                            }{
+                                \IfFileExists{./\articlepath/##2.png}{
+                                    \originalincludepdf[##1]{./\articlepath/##2.png}
+                                }{
+                                    \IfFileExists{./##2.jpg}{
+                                        \originalincludepdf[##1]{./##2.jpg}
+                                    }{
+                                        \IfFileExists{./##2.pdf}{
+                                            \originalincludepdf[##1]{./##2.pdf}
+                                        }{
+                                            \originalincludepdf[##1]{./##2.png}
+
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     \fi
 
@@ -530,7 +622,7 @@
 % This allows us to include graphics without the need to include the file
 % extension. This is useful if you need to convert image files from one format
 % to another (e.g. RGB to CMYK), and want to prioritize JPEGs.
-\DeclareGraphicsExtensions{.jpg,.png,.pdf}
+\DeclareGraphicsExtensions{.jpg,.pdf,.png}
 
 
 
