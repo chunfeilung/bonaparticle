@@ -52,7 +52,7 @@
 \NeedsTeXFormat{LaTeX2e}
 
 \ProvidesClass{bonaparticle}[
-    2015/04/20
+    2015/04/23
     I definitely should've named this the magazine class.
 ]
 
@@ -298,6 +298,8 @@
     titletoc,
   % I forgot what this does. Just gonna leave it just in case.
     trimspaces,
+  % Straight quotes in verbatim environments
+    upquote,
   % Smart spaces (but still not self-aware)
     xspace,
   % For inserting full-page images
