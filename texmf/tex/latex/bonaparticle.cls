@@ -52,7 +52,7 @@
 \NeedsTeXFormat{LaTeX2e}
 
 \ProvidesClass{bonaparticle}[
-    2015/04/23
+    2015/04/24
     I definitely should've named this the magazine class.
 ]
 
@@ -617,6 +617,9 @@
         }
     \fi
 
+    % Fake pages should not show up in the final version of the magazine.
+    \renewcommand{\fakepage}{}
+
     \originalinclude{./\articlepath/\articlefile}
 }
 
@@ -1126,6 +1129,32 @@
 }{
 
 }
+
+
+% Insert a fake page (useful if you want your article to start on a left page
+% rather than a left one. This command only works when typesetting individual
+% articles.
+\newcommand{\fakepage}{
+    \clearpage
+
+    \begin{center}
+        \Huge
+        % Heart-breakers gonna
+        ~\\ % Break
+        ~\\ % Break
+        ~\\ % Break
+        ~\\ % Break
+        ~\\ % Break
+        % And the fakers gonna fake, fake, fake, fake, fake
+        \hl{FAKE PAGE}
+    \end{center}
+
+    \newpage
+}
+
+
+
+
 
 
 
