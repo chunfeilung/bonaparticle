@@ -731,6 +731,16 @@
 
 
 
+%    O t h e r
+%    - - - - -
+% Other stuff.
+
+% Display non-breaking spaces as... spaces
+\DeclareUnicodeCharacter{00A0}{ }
+
+
+
+
 % ---------------------------------------------------------------------------- %
 
 
