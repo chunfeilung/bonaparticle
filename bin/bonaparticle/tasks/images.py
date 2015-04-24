@@ -136,7 +136,7 @@ class PrintConversionTask(ImageTask):
                 ])
                 self.owner.success("Successfully converted " + image)
             except:
-                self.owner.error("Could not successfully convert " + image)
+                self.owner.error("Failed to convert " + image)
 
 
 

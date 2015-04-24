@@ -52,7 +52,7 @@
 \NeedsTeXFormat{LaTeX2e}
 
 \ProvidesClass{bonaparticle}[
-    2015/04/04
+    2015/04/24
     I definitely should've named this the magazine class.
 ]
 
@@ -267,6 +267,8 @@
     ifthen,
   % Only used for checking whether the document is compiled using XeTeX
     ifxetex,
+  % For redefining commands with optional arguments
+    letltxmacro,
   % Easily insert placeholder texts
     lipsum,
   % Handy for code
@@ -296,6 +298,8 @@
     titletoc,
   % I forgot what this does. Just gonna leave it just in case.
     trimspaces,
+  % Straight quotes in verbatim environments
+    upquote,
   % Smart spaces (but still not self-aware)
     xspace,
   % For inserting full-page images
@@ -497,6 +501,20 @@
 % Modifying \include so that it correctly sets the graphicspaths
 % for each article
 \let\originalinclude\include
+\LetLtxMacro\originalincludepdf\includepdf
+
+\renewcommand{\includepdf}[2][]{
+    \IfFileExists{./#2.jpg}{
+        \originalincludepdf[#1]{./#2.jpg}
+    }{
+        \IfFileExists{./#2.pdf}{
+            \originalincludepdf[#1]{./#2.pdf}
+        }{
+            \originalincludepdf[#1]{./#2.png}
+        }
+    }
+}
+
 \renewcommand{\include}[1]{
     % Extract the folder and filename of the included article
     \makeatletter
@@ -515,13 +533,92 @@
             {./\articlepath/}
             {./}
         }
+
+        % Let‘s just pretend that this code is some kind of expressionist art,
+        % and not something my three year old nephew could have written.
+        \renewcommand{\includepdf}[2][]{
+            \IfFileExists{./Images/Print/\articlepath/##2.jpg}{
+                \originalincludepdf[##1]{./Images/Print/\articlepath/##2.jpg}
+            }{
+                \IfFileExists{./Images/Print/\articlepath/##2.pdf}{
+                    \originalincludepdf[##1]{./Images/Print/\articlepath/##2.pdf}
+                }{
+                    \IfFileExists{./Images/Print/\articlepath/##2.png}{
+                        \originalincludepdf[##1]{./Images/Print/\articlepath/##2.png}
+                    }{
+                        \IfFileExists{./\articlepath/##2.jpg}{
+                            \originalincludepdf[##1]{./\articlepath/##2.jpg}
+                        }{
+                            \IfFileExists{./\articlepath/##2.pdf}{
+                                \originalincludepdf[##1]{./\articlepath/##2.pdf}
+                            }{
+                                \IfFileExists{./\articlepath/##2.png}{
+                                    \originalincludepdf[##1]{./\articlepath/##2.png}
+                                }{
+                                    \IfFileExists{./##2.jpg}{
+                                        \originalincludepdf[##1]{./##2.jpg}
+                                    }{
+                                        \IfFileExists{./##2.pdf}{
+                                            \originalincludepdf[##1]{./##2.pdf}
+                                        }{
+                                            \originalincludepdf[##1]{./##2.png}
+
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     \else
         \graphicspath{
             {./Images/Screen/\articlepath/}
             {./\articlepath/}
             {./}
         }
+
+        \renewcommand{\includepdf}[2][]{
+            \IfFileExists{./Images/Screen/\articlepath/##2.jpg}{
+                \originalincludepdf[##1]{./Images/Screen/\articlepath/##2.jpg}
+            }{
+                \IfFileExists{./Images/Screen/\articlepath/##2.pdf}{
+                    \originalincludepdf[##1]{./Images/Screen/\articlepath/##2.pdf}
+                }{
+                    \IfFileExists{./Images/Screen/\articlepath/##2.png}{
+                        \originalincludepdf[##1]{./Images/Screen/\articlepath/##2.png}
+                    }{
+                        \IfFileExists{./\articlepath/##2.jpg}{
+                            \originalincludepdf[##1]{./\articlepath/##2.jpg}
+                        }{
+                            \IfFileExists{./\articlepath/##2.pdf}{
+                                \originalincludepdf[##1]{./\articlepath/##2.pdf}
+                            }{
+                                \IfFileExists{./\articlepath/##2.png}{
+                                    \originalincludepdf[##1]{./\articlepath/##2.png}
+                                }{
+                                    \IfFileExists{./##2.jpg}{
+                                        \originalincludepdf[##1]{./##2.jpg}
+                                    }{
+                                        \IfFileExists{./##2.pdf}{
+                                            \originalincludepdf[##1]{./##2.pdf}
+                                        }{
+                                            \originalincludepdf[##1]{./##2.png}
+
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     \fi
+
+    % Fake pages should not show up in the final version of the magazine.
+    \renewcommand{\fakepage}{}
 
     \originalinclude{./\articlepath/\articlefile}
 }
@@ -530,7 +627,7 @@
 % This allows us to include graphics without the need to include the file
 % extension. This is useful if you need to convert image files from one format
 % to another (e.g. RGB to CMYK), and want to prioritize JPEGs.
-\DeclareGraphicsExtensions{.jpg,.png,.pdf}
+\DeclareGraphicsExtensions{.jpg,.pdf,.png}
 
 
 
@@ -630,6 +727,16 @@
 \definecolor{knine} {cmyk}{0, 0, 0, 0.2}
 \definecolor{kten}  {cmyk}{0, 0, 0, 0.1}
 \definecolor{kzero} {cmyk}{0, 0, 0, 0  }
+
+
+
+
+%    O t h e r
+%    - - - - -
+% Other stuff.
+
+% Display non-breaking spaces as... spaces
+\DeclareUnicodeCharacter{00A0}{ }
 
 
 
@@ -1032,6 +1139,32 @@
 }{
 
 }
+
+
+% Insert a fake page (useful if you want your article to start on a left page
+% rather than a left one. This command only works when typesetting individual
+% articles.
+\newcommand{\fakepage}{
+    \clearpage
+
+    \begin{center}
+        \Huge
+        % Heart-breakers gonna
+        ~\\ % Break
+        ~\\ % Break
+        ~\\ % Break
+        ~\\ % Break
+        ~\\ % Break
+        % And the fakers gonna fake, fake, fake, fake, fake
+        \hl{FAKE PAGE}
+    \end{center}
+
+    \newpage
+}
+
+
+
+
 
 
 
