@@ -22,7 +22,8 @@
 %                         B O N A P A R T I C L E      
 %                         =======================
 %
-% This class can help you make magazines that do not look awful, using LaTeX.
+% This class helps you make magazines that do not look awful (although nothing
+% stops you from making awful-looking magazines anyway), using LaTeX.
 %
 % The bonaparticle class comes with a similarly named Python script that helps
 % editors with some rather mundane tasks such as automatic checking and 
@@ -31,12 +32,12 @@
 %
 % This class was created with several goals:
 % - To offer an easy and somewhat idiot-proof interface to those who need to
-%   create reasonably-looking magazines with lots of images
+%   create reasonably-looking magazines with lots of images;
 % - To offer an easy interface to those who are tasked with the creation of a
-%   custom-made LaTeX class, but don’t want to spend much time doing that
+%   custom-made LaTeX class, but don’t want to spend much time doing that;
 % - So I finally have something to put on my GitHub account (even though I
 %   technically never use (La)TeX, so this is kind of not very representative
-%   of what I actually doing)
+%   of what I actually do).
 %
 %
 %     -- Chun Fei Lung
@@ -52,7 +53,7 @@
 \NeedsTeXFormat{LaTeX2e}
 
 \ProvidesClass{bonaparticle}[
-    2015/04/24
+    2015/04/25
     I definitely should've named this the magazine class.
 ]
 
@@ -190,7 +191,11 @@
 
 %    P A C K A G E S
 %    ---------------
-% 
+% Loadin' packages here!
+%
+% Please note that the babel package is NOT automatically loaded by this class.
+% If your class is used with pdftex, please load the babel package in your
+% bonaparticle child class.
 
 
 
@@ -221,15 +226,17 @@
 
 % Microtypography
 \RequirePackage[
-    factor=2000
-]{microtype}
+    factor=2000 % "This" is how paragraphs with quotation marks at the beginning
+]{microtype}    %  or end of lines will be typeset with a factor of 2000.
 
 
 
 
 %    A   b i g   a s s - l i s t
 %    - - - - - - - - - - - - - -
-% http://xkcd.com/37/
+% A very long list with packages that can be loaded without passing options.
+%
+% Also see: http://xkcd.com/37/
 
 
 \RequirePackage{
@@ -273,8 +280,9 @@
     lipsum,
   % Handy for code
     listings,
-  % Support for multi-column articles. Actually a horrendously broken package.
+  % Support for multi-column articles.
     multicol,
+  % Fixes some of the issues with two-column articles 
     fix2col,
   % We don't want no \noindent
     parskip,
@@ -383,6 +391,7 @@
 % nutshell: this allows us to include entire LaTeX documents. If you want to
 % know what each line does, run a diff on this section and docmute.sty, and read
 % the package documentation.
+%
 % Important changes include:
 %  - The preamble is kept intact: this also means that whoever compiles the
 %    master document should make sure there are no conflicts among files
@@ -397,6 +406,8 @@
     \newcount\article@nestinglevel
     \article@nestinglevel=0\relax
     \renewcommand{\documentclass}[2][]{
+        % You may want to redefine this \resetbonaparticlevariables command in
+        % your child class.
         \resetbonaparticlevariables
     }
     \renewenvironment{document}{%
@@ -650,10 +661,10 @@
 \newcommand{\thegenre          }{}
 \newcommand{\thetitle          }{}
 \newcommand{\theshortenedtitle }{} % Not to be directly set by users
-\newcommand{\thesubtitle       }{} % Prevent awkward whitespace
+\newcommand{\thesubtitle       }{}
 \newcommand{\theauthor         }{}
 \newcommand{\theshortenedauthor}{} % Not to be directly set by users
-\newcommand{\thedate           }{}
+\newcommand{\thedate           }{} % 
 
 
 % These values will be redefined by \resetbonaparticlevariables.
@@ -1066,7 +1077,6 @@
 
 \captionsetup{
     belowskip=3mm,
-    % format=hang,
     labelfont=bf,
     labelsep=quad,
     textfont=it,
@@ -1091,12 +1101,6 @@
 %    G e n e r a l
 %    - - - - - - -
 % Stuff that's used throughout the publication
-
-
-\newcommand{\articlelanguage}[1]{
-    \renewcommand{\thearticlelanguage}{#1}
-    % @todo: docmute-commando aanpassen
-}
 
 
 % \themagazinename
@@ -1155,16 +1159,16 @@
         ~\\ % Break
         ~\\ % Break
         ~\\ % Break
-        % And the fakers gonna fake, fake, fake, fake, fake
+            % And the fakers gonna fake,
+            %                      fake,
+            %                      fake,
+            %                      fake,
+            %                      fake
         \hl{FAKE PAGE}
     \end{center}
 
     \newpage
 }
-
-
-
-
 
 
 
@@ -1252,7 +1256,7 @@
 }
 
 
-% Right now, this is literally just \bfseries
+% Right now, this is pretty much equivalent to \bfseries
 \newenvironment{lead}
     {
         \noindent
@@ -1326,11 +1330,11 @@
 
 % Insert a full-page image as a background.
 
-%  +- Example ----------------------------------+
-%  |                                            |
-%  |  \coverart}{beautiful-teapot.pdf}{15}{15}  |
-%  |                                            |
-%  +--------------------------------------------+
+%  +- Example -----------------------------+
+%  |                                       |
+%  |  \coverart{beautiful-teapot}{15}{15}  |
+%  |                                       |
+%  +---------------------------------------+
 \newcommand{\coverart}[1]{
     \AddToShipoutPicture*{
         \put(0,-10.5)
@@ -1353,11 +1357,11 @@
 
 % The magazine's front page. Somewhat similar to \coverart
 %
-%  +- Example ---------------------------------+
-%  |                                           |
-%  |  \frontpage}{girl-next-door.pdf}{15}{15}  |
-%  |                                           |
-%  +-------------------------------------------+
+%  +- Example ----------------------------+
+%  |                                      |
+%  |  \frontpage{girl-next-door}{15}{15}  |
+%  |                                      |
+%  +--------------------------------------+
 \newcommand{\frontpage}[3]{
     \includepdf[
         noautoscale,
@@ -1372,11 +1376,11 @@
 
 % Technically an alias for \frontpage, but has slightly different semantics.
 %
-%  +- Example ---------------------------------------+
-%  |                                                 |
-%  |  \fullpageadvertisement}{deloitte.pdf}{15}{15}  |
-%  |                                                 |
-%  +-------------------------------------------------+
+%  +- Example ----------------------------------+
+%  |                                            |
+%  |  \fullpageadvertisement{deloitte}{15}{15}  |
+%  |                                            |
+%  +--------------------------------------------+
 \newcommand{\fullpageadvertisement}[3]{
     \clearpage
     \newpage
@@ -1408,24 +1412,29 @@
 
 % Add a marginless image that takes up the entire paper width.
 %
+% The following command will add the image to the top of the page:
+%
 %  +- Example -----------------------------------------+
 %  |                                                   |
-%  |  \mimage{image-on-upper-half-of-page}{t}  |
+%  |  \fullwidthimage{image-on-upper-half-of-page}{t}  |
 %  |  <your other content>                             |
 %  |                                                   |
 %  +---------------------------------------------------+
-
+%
+% This will place the image at the bottom of the page. Somewhat quirky at times.
+%
 %  +- Example -----------------------------------------+
 %  |                                                   |
 %  |  <your other content>                             |
 %  |  \fullwidthimage{image-on-upper-half-of-page}{b}  |
 %  |                                                   |
 %  +---------------------------------------------------+
+\newlength\fullwidthimageheight
+
 \newcommand{\fullwidthimage}[2]{
     % Measure the height of the image when we set its width to \paperwidth
     \def\mygraphic{\includegraphics[draft,width=\paperwidth+5mm]{#1}}
-    \newlength\imageheight
-    \setlength\imageheight{\heightof{\phantom{\mygraphic}} - 1.5cm}
+    \setlength\fullwidthimageheight{\heightof{\phantom{\mygraphic}} - 1.5cm}
 
     \ifstrequal{#2}{t}{
         
@@ -1448,7 +1457,7 @@
             }
         }
         
-        ~\vspace{\imageheight}
+        ~\vspace{\fullwidthimageheight}
 
     }{
         \begin{figure*}[b!]
@@ -1458,7 +1467,7 @@
                 \includegraphics[
                     draft,
                     width=\textwidth,
-                    height=\imageheight - 5mm
+                    height=\fullwidthimageheight - 5mm
                 ]
                 {#1}
             }
@@ -1621,7 +1630,7 @@
 %  |      subtitlecolor=green,             |
 %  |      authorcolor=yellow,              |
 %  |      leadcolor=red,                   |
-%  |  ]{wintendo64.png}{                   |
+%  |  ]{wintendo64}{                       |
 %  |      This article teaches you how to  |
 %  |      bake delicious Wintendo 64       |
 %  |      apple-scented urinal cakes.      |
