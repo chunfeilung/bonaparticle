@@ -53,7 +53,7 @@
 \NeedsTeXFormat{LaTeX2e}
 
 \ProvidesClass{bonaparticle}[
-    2015/04/25
+    2015/04/26
     I definitely should've named this the magazine class.
 ]
 
@@ -572,8 +572,11 @@
                                         \IfFileExists{./##2.pdf}{
                                             \originalincludepdf[##1]{./##2.pdf}
                                         }{
-                                            \originalincludepdf[##1]{./##2.png}
-
+                                            \IfFileExists{./##2.png}{
+                                                \originalincludepdf[##1]{./##2.png}
+                                            }{
+                                                \originalincludepdf[##1]{./##2}
+                                            }
                                         }
                                     }
                                 }
@@ -615,8 +618,11 @@
                                         \IfFileExists{./##2.pdf}{
                                             \originalincludepdf[##1]{./##2.pdf}
                                         }{
-                                            \originalincludepdf[##1]{./##2.png}
-
+                                            \IfFileExists{./##2.png}{
+                                                \originalincludepdf[##1]{./##2.png}
+                                            }{
+                                                \originalincludepdf[##1]{./##2}
+                                            }
                                         }
                                     }
                                 }
