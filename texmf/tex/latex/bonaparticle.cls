@@ -53,7 +53,7 @@
 \NeedsTeXFormat{LaTeX2e}
 
 \ProvidesClass{bonaparticle}[
-    2015/04/26
+    2015/04/27
     I definitely should've named this the magazine class.
 ]
 
@@ -250,6 +250,8 @@
     booktabs,
   % For doing calculations
     calc,
+  % A more clever way to insert references to figures, tables, equations, etc.
+    cleveref,
   % Used for the color bar in the print version
     colortbl,
   % Better quotations
