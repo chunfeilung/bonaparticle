@@ -256,6 +256,8 @@
     colortbl,
   % Better quotations
     csquotes,
+  % More control over the presentation of itemize, description, and enumerate
+    enumitem,
   % Pictures.
     eso-pic,
   % Offers programming facilities for LaTeX
