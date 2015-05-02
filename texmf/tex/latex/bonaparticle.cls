@@ -53,7 +53,7 @@
 \NeedsTeXFormat{LaTeX2e}
 
 \ProvidesClass{bonaparticle}[
-    2015/04/27
+    2015/05/02
     I definitely should've named this the magazine class.
 ]
 
