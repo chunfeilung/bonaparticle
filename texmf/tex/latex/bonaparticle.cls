@@ -53,7 +53,7 @@
 \NeedsTeXFormat{LaTeX2e}
 
 \ProvidesClass{bonaparticle}[
-    2015/04/27
+    2015/05/02
     I definitely should've named this the magazine class.
 ]
 
@@ -256,6 +256,8 @@
     colortbl,
   % Better quotations
     csquotes,
+  % More control over the presentation of itemize, description, and enumerate
+    enumitem,
   % Pictures.
     eso-pic,
   % Offers programming facilities for LaTeX

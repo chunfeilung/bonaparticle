@@ -15,9 +15,8 @@ DEFAULT_MASTER_FILE = 'Master.tex'
 # Create a new BonapartechnicalEditor instance
 editor = core.BonapartechnicalEditor()
 
-# Assign two simple image conversion tasks to our newly created editor
+# Assign a simple image conversion task to our newly created editor
 editor.assign_task(images.NaiveCompressionTask())
-editor.assign_task(images.PrintConversionTask())
 
 
 if len(argv) > 1:
