@@ -8,5 +8,7 @@ The _bonaparticle_ project consists of a LaTeX class (`bonaparticle.cls`) and a 
 ## Contacting the author
 If you have any questions about this project (or just want to say hi), you can contact me by sending an email to:
 
-    name  = 'chunfeilung'
-    email = name[0] + name[4] + name[-4:] + '@acm.org'
+```python
+name  = 'chunfeilung'
+email = name[0] + name[4] + name[-4:] + '@acm.org'
+```
