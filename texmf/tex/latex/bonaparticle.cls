@@ -1503,6 +1503,20 @@
     }
 }
 
+% Use this environment to mark up advertisements.
+%
+% This is not strictly necessary, and indeed one doesn’t _have_ to use this for
+% images, but it does make it easier to determine which parts of a TeX document
+% are actually part of the article, and which parts are not. This may be useful
+% if you ever decide you want to convert an article to HTML or EPUB, and insert
+% some nice web advertisements into them, rather than showing out-dated, non-
+% personalized print advertisements.
+\newenvironment{advertisement}{
+
+}{
+
+}
+
 
 
 
