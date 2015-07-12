@@ -1,6 +1,6 @@
 # Creating magazines with LaTeX and Bonaparticle
 
-**Using LaTeX to produce magazines that look just as well as those made using Adobe’s InDesign is way harder than it should be. You don’t want to mess around with arcane (La)TeX commands – you just want to create something that looks  nice, with as little effort as possible. Bonaparticle helps you do exactly that, by offering an easy to extend and use LaTeX class, and a handy build script.**
+**Using LaTeX to produce magazines that look just as well as those made using Adobe’s InDesign is way harder than it should be. You don’t want to mess around with arcane (La)TeX commands – you just want to create something that looks  nice, with as little effort as possible. Bonaparticle helps you do exactly that, by offering an easy to extend and use LaTeX class.**
 
 ## Built using Bonaparticle
 
@@ -20,7 +20,7 @@ Of course! However, development and all related activities are usually only done
 The first reasonably feature-complete and bug-free version isn’t expected until February 2016, so probably around then. If you are comfortable wading through LaTeX code, you can read the comments in `bonaparticle.cls` for now, or send me questions via email.
 
 ## License
-The Bonaparticle project consists of a LaTeX class (`bonaparticle.cls`) and a small collection of helper scripts (pretty much everything inside the `bin` folder). [The MIT license](LICENSE.md) applies to these, and only these, parts of this repository.
+`bonaparticle.cls` is licensed under the [The MIT license](LICENSE.md). I’m not exactly sure which license applies to the Frutiger files, so those’ll most likely be removed from this repository in the near future.
 
 ## Contacting the author
 If you have any questions about this project (or just want to say hi), you can contact me by sending an email to:
