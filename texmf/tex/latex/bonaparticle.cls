@@ -153,7 +153,7 @@
     \renewcommand{\geometryright}      {1.4cm}
 
     \renewcommand{\croppaperheight}{250mm}
-    \renewcommand{\croppaperwidth} {180mm}
+    \renewcommand{\croppaperwidth} {188mm}
 }
 
 
