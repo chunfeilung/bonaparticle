@@ -25,11 +25,6 @@
 % This class helps you make magazines that do not look awful (although nothing
 % stops you from making awful-looking magazines anyway), using LaTeX.
 %
-% The bonaparticle class comes with a similarly named Python script that helps
-% editors with some rather mundane tasks such as automatic checking and 
-% conversion of used graphics, and exporting to HTML/EPUB versions. bonaparticle
-% also functions perfectly fine as a standalone class however.
-%
 % This class was created with several goals:
 % - To offer an easy and somewhat idiot-proof interface to those who need to
 %   create reasonably-looking magazines with lots of images;
@@ -53,7 +48,7 @@
 \NeedsTeXFormat{LaTeX2e}
 
 \ProvidesClass{bonaparticle}[
-    2015/05/02
+    2015/07/12
     I definitely should've named this the magazine class.
 ]
 
@@ -158,7 +153,7 @@
     \renewcommand{\geometryright}      {1.4cm}
 
     \renewcommand{\croppaperheight}{250mm}
-    \renewcommand{\croppaperwidth} {180mm}
+    \renewcommand{\croppaperwidth} {188mm}
 }
 
 
@@ -359,8 +354,7 @@
 % true (i.e. the bonaparticle class was loaded with the print option). If so,
 % we'll load the crop package with some sensible default options, draw a fancy
 % color bar on every page, and use color definitions in CMYK format rather than
-% RGB. The same goes for images (although you will have to do the conversions
-% either manually or using the supplied bonaparticle Python script).
+% RGB.
 \ifprint
     \RequirePackage[
         cam,
@@ -539,104 +533,42 @@
     \makeatother
 
     % When each of these paths will be used, in reverse order:
-    %  3. When you compile a standalone article
-    %  2. When you compile a master document
-    %  1. When you use the bonaparticle script and then compile the master file
-    \ifprint
-        \graphicspath{
-            {./Images/Print/\articlepath/}
-            {./\articlepath/}
-            {./}
-        }
+    %  2. When you compile a standalone article
+    %  1. When you compile a master document
+    \graphicspath{
+        {./\articlepath/}
+        {./}
+    }
 
-        % Let‘s just pretend that this code is some kind of expressionist art,
-        % and not something my three year old nephew could have written.
-        \renewcommand{\includepdf}[2][]{
-            \IfFileExists{./Images/Print/\articlepath/##2.jpg}{
-                \originalincludepdf[##1]{./Images/Print/\articlepath/##2.jpg}
+    % Let‘s just pretend that this code is some kind of expressionist art,
+    % and not something my three year old nephew could have written.
+    \renewcommand{\includepdf}[2][]{
+        \IfFileExists{./\articlepath/##2.jpg}{
+            \originalincludepdf[##1]{./\articlepath/##2.jpg}
+        }{
+            \IfFileExists{./\articlepath/##2.pdf}{
+                \originalincludepdf[##1]{./\articlepath/##2.pdf}
             }{
-                \IfFileExists{./Images/Print/\articlepath/##2.pdf}{
-                    \originalincludepdf[##1]{./Images/Print/\articlepath/##2.pdf}
+                \IfFileExists{./\articlepath/##2.png}{
+                    \originalincludepdf[##1]{./\articlepath/##2.png}
                 }{
-                    \IfFileExists{./Images/Print/\articlepath/##2.png}{
-                        \originalincludepdf[##1]{./Images/Print/\articlepath/##2.png}
+                    \IfFileExists{./##2.jpg}{
+                        \originalincludepdf[##1]{./##2.jpg}
                     }{
-                        \IfFileExists{./\articlepath/##2.jpg}{
-                            \originalincludepdf[##1]{./\articlepath/##2.jpg}
+                        \IfFileExists{./##2.pdf}{
+                            \originalincludepdf[##1]{./##2.pdf}
                         }{
-                            \IfFileExists{./\articlepath/##2.pdf}{
-                                \originalincludepdf[##1]{./\articlepath/##2.pdf}
+                            \IfFileExists{./##2.png}{
+                                \originalincludepdf[##1]{./##2.png}
                             }{
-                                \IfFileExists{./\articlepath/##2.png}{
-                                    \originalincludepdf[##1]{./\articlepath/##2.png}
-                                }{
-                                    \IfFileExists{./##2.jpg}{
-                                        \originalincludepdf[##1]{./##2.jpg}
-                                    }{
-                                        \IfFileExists{./##2.pdf}{
-                                            \originalincludepdf[##1]{./##2.pdf}
-                                        }{
-                                            \IfFileExists{./##2.png}{
-                                                \originalincludepdf[##1]{./##2.png}
-                                            }{
-                                                \originalincludepdf[##1]{./##2}
-                                            }
-                                        }
-                                    }
-                                }
+                                \originalincludepdf[##1]{./##2}
                             }
                         }
                     }
                 }
             }
         }
-    \else
-        \graphicspath{
-            {./Images/Screen/\articlepath/}
-            {./\articlepath/}
-            {./}
-        }
-
-        \renewcommand{\includepdf}[2][]{
-            \IfFileExists{./Images/Screen/\articlepath/##2.jpg}{
-                \originalincludepdf[##1]{./Images/Screen/\articlepath/##2.jpg}
-            }{
-                \IfFileExists{./Images/Screen/\articlepath/##2.pdf}{
-                    \originalincludepdf[##1]{./Images/Screen/\articlepath/##2.pdf}
-                }{
-                    \IfFileExists{./Images/Screen/\articlepath/##2.png}{
-                        \originalincludepdf[##1]{./Images/Screen/\articlepath/##2.png}
-                    }{
-                        \IfFileExists{./\articlepath/##2.jpg}{
-                            \originalincludepdf[##1]{./\articlepath/##2.jpg}
-                        }{
-                            \IfFileExists{./\articlepath/##2.pdf}{
-                                \originalincludepdf[##1]{./\articlepath/##2.pdf}
-                            }{
-                                \IfFileExists{./\articlepath/##2.png}{
-                                    \originalincludepdf[##1]{./\articlepath/##2.png}
-                                }{
-                                    \IfFileExists{./##2.jpg}{
-                                        \originalincludepdf[##1]{./##2.jpg}
-                                    }{
-                                        \IfFileExists{./##2.pdf}{
-                                            \originalincludepdf[##1]{./##2.pdf}
-                                        }{
-                                            \IfFileExists{./##2.png}{
-                                                \originalincludepdf[##1]{./##2.png}
-                                            }{
-                                                \originalincludepdf[##1]{./##2}
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    \fi
+    }
 
     % Fake pages should not show up in the final version of the magazine.
     \renewcommand{\fakepage}{}
@@ -1267,18 +1199,16 @@
 
 
 % Right now, this is pretty much equivalent to \bfseries
-\newenvironment{lead}
-    {
-        \noindent
-        \bfseries\bgroup
-        \ignorespaces
-    }
-    {
-        \egroup
-        \par\noindent
-        \ignorespacesafterend
-        \vspace{-1.5\baselineskip}
-    }
+\newenvironment{lead}{
+      \noindent
+      \bfseries\bgroup
+      \ignorespaces
+}{
+      \egroup
+      \par\noindent
+      \ignorespacesafterend
+      \vspace{-1.5\baselineskip}
+}
 
 
 
@@ -1288,23 +1218,21 @@
 % Different kinds of text.
 
 % This is for a pullquote. I don't know what else you could be expecting.
-\newenvironment{pullquote}
-    {
-        \begin{leftbar}
-        \noindent
-        \raggedright
-        \Large\textbf\bgroup\textit\bgroup
-        \ignorespaces
-        \color{\thegenrecolor}
-    }
-    {
-        \egroup\egroup
-        \par\noindent
-        \ignorespacesafterend
-        \vspace{-1.3\baselineskip}
-        \end{leftbar}
-        \vspace{-.5\baselineskip}
-    }
+\newenvironment{pullquote}{
+    \begin{leftbar}
+    \noindent
+    \raggedright
+    \Large\textbf\bgroup\textit\bgroup
+    \ignorespaces
+    \color{\thegenrecolor}
+}{
+    \egroup\egroup
+    \par\noindent
+    \ignorespacesafterend
+    \vspace{-1.3\baselineskip}
+    \end{leftbar}
+    \vspace{-.5\baselineskip}
+}
 
 
 % This is for those (possibly) brightly colored boxes that may contain some

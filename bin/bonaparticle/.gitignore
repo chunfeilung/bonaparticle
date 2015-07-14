@@ -1,3 +1,0 @@
-# Ignore all Python bytecode files
-*.pyc
-!.gitignore
