@@ -48,7 +48,7 @@
 \NeedsTeXFormat{LaTeX2e}
 
 \ProvidesClass{bonaparticle}[
-    2015/07/12
+    2015/08/29
     I definitely should've named this the magazine class.
 ]
 
@@ -296,7 +296,7 @@
   % A considerably better linespread
     setspace,
   % Subfigures
-    subfigure,
+    subcaption,
   % Not actually used in this class yet, but kind of nice to have
     tikz,
   % Styling of chapters and sections
