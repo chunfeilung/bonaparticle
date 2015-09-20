@@ -1,7 +1,0 @@
-If you plan on using the (commercially available) Frutiger Linotype font, you'll
-need to copy the font files to this directory, and rename them as follows:
-
- * Frutiger Linotype (Bold)        -> frutbd.ttf
- * Frutiger Linotype (Regular)     -> frutiger.ttf
- * Frutiger Linotype (Italic)      -> frutit.ttf
- * Frutiger Linotype (Bold Italic) -> frutz.ttf
