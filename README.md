@@ -20,7 +20,7 @@ Of course! However, development and all related activities are usually only done
 The first reasonably feature-complete and bug-free version isn’t expected until February 2016, so probably around then. If you are comfortable wading through LaTeX code, you can read the comments in `bonaparticle.cls` for now, or send me questions via email.
 
 ## License
-`bonaparticle.cls` is licensed under the [The MIT license](LICENSE.md). I’m not exactly sure which license applies to the Frutiger files, so those’ll most likely be removed from this repository in the near future.
+`bonaparticle.cls` is licensed under the [The MIT license](LICENSE.md).
 
 ## Contacting the author
 If you have any questions about this project (or just want to say hi), you can contact me by sending an email to:
