@@ -1,0 +1,5 @@
+# Ignore auxiliary files generally created during compilation of LaTeX files
+*.aux
+*.log
+*.out
+*.synctex.gz
