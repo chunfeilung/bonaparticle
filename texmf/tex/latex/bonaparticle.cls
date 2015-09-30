@@ -48,7 +48,7 @@
 \NeedsTeXFormat{LaTeX2e}
 
 \ProvidesClass{bonaparticle}[
-    2015/08/29
+    2015/09/30
     I definitely should've named this the magazine class.
 ]
 
@@ -627,59 +627,63 @@
 
 
 % 50 Shades of Cyan
-\definecolor{cone}  {cmyk}{1,   0, 0, 0}
-\definecolor{ctwo}  {cmyk}{0.9, 0, 0, 0}
-\definecolor{cthree}{cmyk}{0.8, 0, 0, 0}
-\definecolor{cfour} {cmyk}{0.7, 0, 0, 0}
-\definecolor{cfive} {cmyk}{0.6, 0, 0, 0}
-\definecolor{csix}  {cmyk}{0.5, 0, 0, 0}
-\definecolor{cseven}{cmyk}{0.4, 0, 0, 0}
-\definecolor{ceight}{cmyk}{0.3, 0, 0, 0}
-\definecolor{cnine} {cmyk}{0.2, 0, 0, 0}
-\definecolor{cten}  {cmyk}{0.1, 0, 0, 0}
-\definecolor{czero} {cmyk}{0,   0, 0, 0}
+\definecolor{colorbar.c.one}  {cmyk}{1,   0, 0, 0}
+\definecolor{colorbar.c.two}  {cmyk}{0.9, 0, 0, 0}
+\definecolor{colorbar.c.three}{cmyk}{0.8, 0, 0, 0}
+\definecolor{colorbar.c.four} {cmyk}{0.7, 0, 0, 0}
+\definecolor{colorbar.c.five} {cmyk}{0.6, 0, 0, 0}
+\definecolor{colorbar.c.six}  {cmyk}{0.5, 0, 0, 0}
+\definecolor{colorbar.c.seven}{cmyk}{0.4, 0, 0, 0}
+\definecolor{colorbar.c.eight}{cmyk}{0.3, 0, 0, 0}
+\definecolor{colorbar.c.nine} {cmyk}{0.2, 0, 0, 0}
+\definecolor{colorbar.c.ten}  {cmyk}{0.1, 0, 0, 0}
+\definecolor{colorbar.c.zero} {cmyk}{0,   0, 0, 0}
 
 
 % 50 Shades of Magenta
-\definecolor{mone}  {cmyk}{0, 1,   0, 0}
-\definecolor{mtwo}  {cmyk}{0, 0.9, 0, 0}
-\definecolor{mthree}{cmyk}{0, 0.8, 0, 0}
-\definecolor{mfour} {cmyk}{0, 0.7, 0, 0}
-\definecolor{mfive} {cmyk}{0, 0.6, 0, 0}
-\definecolor{msix}  {cmyk}{0, 0.5, 0, 0}
-\definecolor{mseven}{cmyk}{0, 0.4, 0, 0}
-\definecolor{meight}{cmyk}{0, 0.3, 0, 0}
-\definecolor{mnine} {cmyk}{0, 0.2, 0, 0}
-\definecolor{mten}  {cmyk}{0, 0.1, 0, 0}
-\definecolor{mzero} {cmyk}{0, 0,   0, 0}
+\definecolor{colorbar.m.one}  {cmyk}{0, 1,   0, 0}
+\definecolor{colorbar.m.two}  {cmyk}{0, 0.9, 0, 0}
+\definecolor{colorbar.m.three}{cmyk}{0, 0.8, 0, 0}
+\definecolor{colorbar.m.four} {cmyk}{0, 0.7, 0, 0}
+\definecolor{colorbar.m.five} {cmyk}{0, 0.6, 0, 0}
+\definecolor{colorbar.m.six}  {cmyk}{0, 0.5, 0, 0}
+\definecolor{colorbar.m.seven}{cmyk}{0, 0.4, 0, 0}
+\definecolor{colorbar.m.eight}{cmyk}{0, 0.3, 0, 0}
+\definecolor{colorbar.m.nine} {cmyk}{0, 0.2, 0, 0}
+\definecolor{colorbar.m.ten}  {cmyk}{0, 0.1, 0, 0}
+\definecolor{colorbar.m.zero} {cmyk}{0, 0,   0, 0}
 
 
 % 50 Shades of Yellow
-\definecolor{yone}  {cmyk}{0, 0, 1,   0}
-\definecolor{ytwo}  {cmyk}{0, 0, 0.9, 0}
-\definecolor{ythree}{cmyk}{0, 0, 0.8, 0}
-\definecolor{yfour} {cmyk}{0, 0, 0.7, 0}
-\definecolor{yfive} {cmyk}{0, 0, 0.6, 0}
-\definecolor{ysix}  {cmyk}{0, 0, 0.5, 0}
-\definecolor{yseven}{cmyk}{0, 0, 0.4, 0}
-\definecolor{yeight}{cmyk}{0, 0, 0.3, 0}
-\definecolor{ynine} {cmyk}{0, 0, 0.2, 0}
-\definecolor{yten}  {cmyk}{0, 0, 0.1, 0}
-\definecolor{yzero} {cmyk}{0, 0, 0,   0}
+\definecolor{colorbar.y.one}  {cmyk}{0, 0, 1,   0}
+\definecolor{colorbar.y.two}  {cmyk}{0, 0, 0.9, 0}
+\definecolor{colorbar.y.three}{cmyk}{0, 0, 0.8, 0}
+\definecolor{colorbar.y.four} {cmyk}{0, 0, 0.7, 0}
+\definecolor{colorbar.y.five} {cmyk}{0, 0, 0.6, 0}
+\definecolor{colorbar.y.six}  {cmyk}{0, 0, 0.5, 0}
+\definecolor{colorbar.y.seven}{cmyk}{0, 0, 0.4, 0}
+\definecolor{colorbar.y.eight}{cmyk}{0, 0, 0.3, 0}
+\definecolor{colorbar.y.nine} {cmyk}{0, 0, 0.2, 0}
+\definecolor{colorbar.y.ten}  {cmyk}{0, 0, 0.1, 0}
+\definecolor{colorbar.y.zero} {cmyk}{0, 0, 0,   0}
 
 
 % 50 Shades of Grey
-\definecolor{kone}  {cmyk}{0, 0, 0, 1  }
-\definecolor{ktwo}  {cmyk}{0, 0, 0, 0.9}
-\definecolor{kthree}{cmyk}{0, 0, 0, 0.8}
-\definecolor{kfour} {cmyk}{0, 0, 0, 0.7}
-\definecolor{kfive} {cmyk}{0, 0, 0, 0.6}
-\definecolor{ksix}  {cmyk}{0, 0, 0, 0.5}
-\definecolor{kseven}{cmyk}{0, 0, 0, 0.4}
-\definecolor{keight}{cmyk}{0, 0, 0, 0.3}
-\definecolor{knine} {cmyk}{0, 0, 0, 0.2}
-\definecolor{kten}  {cmyk}{0, 0, 0, 0.1}
-\definecolor{kzero} {cmyk}{0, 0, 0, 0  }
+\definecolor{colorbar.k.one}  {cmyk}{0, 0, 0, 1  }
+\definecolor{colorbar.k.two}  {cmyk}{0, 0, 0, 0.9}
+\definecolor{colorbar.k.three}{cmyk}{0, 0, 0, 0.8}
+\definecolor{colorbar.k.four} {cmyk}{0, 0, 0, 0.7}
+\definecolor{colorbar.k.five} {cmyk}{0, 0, 0, 0.6}
+\definecolor{colorbar.k.six}  {cmyk}{0, 0, 0, 0.5}
+\definecolor{colorbar.k.seven}{cmyk}{0, 0, 0, 0.4}
+\definecolor{colorbar.k.eight}{cmyk}{0, 0, 0, 0.3}
+\definecolor{colorbar.k.nine} {cmyk}{0, 0, 0, 0.2}
+\definecolor{colorbar.k.ten}  {cmyk}{0, 0, 0, 0.1}
+\definecolor{colorbar.k.zero} {cmyk}{0, 0, 0, 0  }
+
+
+% Other colors
+\definecolor{bonaparticle.syntax.command}{HTML}{861001}
 
 
 
@@ -1101,16 +1105,37 @@
         ~\\ % Break
         ~\\ % Break
         ~\\ % Break
-            % And the fakers gonna fake,
-            %                      fake,
-            %                      fake,
-            %                      fake,
-            %                      fake
-        \hl{FAKE PAGE}
+            % And the fakers gonna
+            %                   fake,
+            %                   fake,
+            %                   fake,
+            %                   fake,
+        \hl{\textbf{PLACEHOLDER/FAKE PAGE}}
+
+        ~\\
+
+        \large{
+            By default, \LaTeX{} will start articles with an odd page number
+            (that is, you end up with a page “on the right”). But sometimes
+            you’re really sure you want an article to start on the left. This
+            placeholder/fake page forces an article to start with an even page
+            number, so you can typeset your article accordingly.
+
+            Note for editors: unless you’re planning on publishing only this
+            article (there are better ways to do that), you don’t have to remove
+            this page! Placeholder/fake pages won’t show up articles are
+            compiled as part of a larger document (i.e.
+            {% Prevent extra space before...
+                \color{bonaparticle.syntax.command}
+                \textbf{\texttt{\textbackslash include}}% ...and after \include
+            }d).
+        }
     \end{center}
 
     \newpage
 }
+% \placeholderpage is an alias for \fakepage
+\let\placeholderpage\fakepage
 
 
 
@@ -1677,56 +1702,56 @@
                     {|cccccccccccc|cccccccccccc|}
                     % This is the first row of bars
                     ~ &
-                    \cellcolor{cone}~   &
-                    \cellcolor{ctwo}~   &
-                    \cellcolor{cthree}~ & 
-                    \cellcolor{cfour}~  &
-                    \cellcolor{cfive}~  &
-                    \cellcolor{csix}~   & 
-                    \cellcolor{cseven}~ &
-                    \cellcolor{ceight}~ &
-                    \cellcolor{cnine}~  & 
-                    \cellcolor{cten}~   &
-                    \cellcolor{czero}~  &
+                    \cellcolor{colorbar.c.one}~   &
+                    \cellcolor{colorbar.c.two}~   &
+                    \cellcolor{colorbar.c.three}~ & 
+                    \cellcolor{colorbar.c.four}~  &
+                    \cellcolor{colorbar.c.five}~  &
+                    \cellcolor{colorbar.c.six}~   & 
+                    \cellcolor{colorbar.c.seven}~ &
+                    \cellcolor{colorbar.c.eight}~ &
+                    \cellcolor{colorbar.c.nine}~  & 
+                    \cellcolor{colorbar.c.ten}~   &
+                    \cellcolor{colorbar.c.zero}~  &
                     ~ &
-                    \cellcolor{mone}~   &
-                    \cellcolor{mtwo}~   &
-                    \cellcolor{mthree}~ & 
-                    \cellcolor{mfour}~  &
-                    \cellcolor{mfive}~  &
-                    \cellcolor{msix}~   & 
-                    \cellcolor{mseven}~ &
-                    \cellcolor{meight}~ &
-                    \cellcolor{mnine}~  & 
-                    \cellcolor{mten}~   &
-                    \cellcolor{mzero}~ \\
+                    \cellcolor{colorbar.m.one}~   &
+                    \cellcolor{colorbar.m.two}~   &
+                    \cellcolor{colorbar.m.three}~ & 
+                    \cellcolor{colorbar.m.four}~  &
+                    \cellcolor{colorbar.m.five}~  &
+                    \cellcolor{colorbar.m.six}~   & 
+                    \cellcolor{colorbar.m.seven}~ &
+                    \cellcolor{colorbar.m.eight}~ &
+                    \cellcolor{colorbar.m.nine}~  & 
+                    \cellcolor{colorbar.m.ten}~   &
+                    \cellcolor{colorbar.m.zero}~ \\
                     % This is the empty row
                     ~&&&&&&&&&&&& &&&&&&&&&&&\\
                     % And this is the third one
                     ~ &
-                    \cellcolor{yone}~   &
-                    \cellcolor{ytwo}~   &
-                    \cellcolor{ythree}~ & 
-                    \cellcolor{yfour}~  &
-                    \cellcolor{yfive}~  &
-                    \cellcolor{ysix}~   & 
-                    \cellcolor{yseven}~ &
-                    \cellcolor{yeight}~ &
-                    \cellcolor{ynine}~  & 
-                    \cellcolor{yten}~   &
-                    \cellcolor{yzero}~  &
+                    \cellcolor{colorbar.y.one}~   &
+                    \cellcolor{colorbar.y.two}~   &
+                    \cellcolor{colorbar.y.three}~ & 
+                    \cellcolor{colorbar.y.four}~  &
+                    \cellcolor{colorbar.y.five}~  &
+                    \cellcolor{colorbar.y.six}~   & 
+                    \cellcolor{colorbar.y.seven}~ &
+                    \cellcolor{colorbar.y.eight}~ &
+                    \cellcolor{colorbar.y.nine}~  & 
+                    \cellcolor{colorbar.y.ten}~   &
+                    \cellcolor{colorbar.y.zero}~  &
                     ~ &
-                    \cellcolor{kone}~   &
-                    \cellcolor{ktwo}~   &
-                    \cellcolor{kthree}~ & 
-                    \cellcolor{kfour}~  &
-                    \cellcolor{kfive}~  &
-                    \cellcolor{ksix}~   & 
-                    \cellcolor{kseven}~ &
-                    \cellcolor{keight}~ &
-                    \cellcolor{knine}~  & 
-                    \cellcolor{kten}~   &
-                    \cellcolor{kzero}~ \\
+                    \cellcolor{colorbar.k.one}~   &
+                    \cellcolor{colorbar.k.two}~   &
+                    \cellcolor{colorbar.k.three}~ & 
+                    \cellcolor{colorbar.k.four}~  &
+                    \cellcolor{colorbar.k.five}~  &
+                    \cellcolor{colorbar.k.six}~   & 
+                    \cellcolor{colorbar.k.seven}~ &
+                    \cellcolor{colorbar.k.eight}~ &
+                    \cellcolor{colorbar.k.nine}~  & 
+                    \cellcolor{colorbar.k.ten}~   &
+                    \cellcolor{colorbar.k.zero}~ \\
                 \end{tabular}
             }
         \end{picture}
