@@ -1105,16 +1105,37 @@
         ~\\ % Break
         ~\\ % Break
         ~\\ % Break
-            % And the fakers gonna fake,
-            %                      fake,
-            %                      fake,
-            %                      fake,
-            %                      fake
-        \hl{FAKE PAGE}
+            % And the fakers gonna
+            %                   fake,
+            %                   fake,
+            %                   fake,
+            %                   fake,
+        \hl{\textbf{PLACEHOLDER/FAKE PAGE}}
+
+        ~\\
+
+        \large{
+            By default, \LaTeX{} will start articles with an odd page number
+            (that is, you end up with a page “on the right”). But sometimes
+            you’re really sure you want an article to start on the left. This
+            placeholder/fake page forces an article to start with an even page
+            number, so you can typeset your article accordingly.
+
+            Note for editors: unless you’re planning on publishing only this
+            article (there are better ways to do that), you don’t have to remove
+            this page! Placeholder/fake pages won’t show up articles are
+            compiled as part of a larger document (i.e.
+            {% Prevent extra space before...
+                \color{bonaparticle.syntax.command}
+                \textbf{\texttt{\textbackslash include}}% ...and after \include
+            }d).
+        }
     \end{center}
 
     \newpage
 }
+% \placeholderpage is an alias for \fakepage
+\let\placeholderpage\fakepage
 
 
 
