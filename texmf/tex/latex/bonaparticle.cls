@@ -682,6 +682,10 @@
 \definecolor{colorbar.k.zero} {cmyk}{0, 0, 0, 0  }
 
 
+% Other colors
+\definecolor{bonaparticle.syntax.command}{HTML}{861001}
+
+
 
 
 %    O t h e r
