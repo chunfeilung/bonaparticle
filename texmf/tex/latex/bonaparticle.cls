@@ -838,9 +838,12 @@
     % Headers on [E]ven pages are [L]eft-aligned
     \fancyhead[LE]
     {
-        \textbf{\thegenre}
-        \ifstrequal{#1}{title}{
+        \ifthenelse{\equal{\thegenre}{}}
+        {}{
+            \textbf{\thegenre}
             \quad
+        }
+        \ifstrequal{#1}{title}{
             \leftmark
         }{}
     }
@@ -849,10 +852,13 @@
     \fancyhead[RO]
     {
         \ifstrequal{#1}{title}{
-            \leftmark
-            \quad
-        }{}
-        \textbf{\thegenre}
+            \leftmark% Prevent whitespaces on the right using %
+        }{}%
+        \ifthenelse{\equal{\thegenre}{}}
+        {}{
+            \quad%
+            \textbf{\thegenre}%
+        }%
     }
 
     % This sets the thickness of the line below the header
