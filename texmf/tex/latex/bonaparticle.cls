@@ -1545,6 +1545,7 @@
 % Add a title to the page and the table of contents. For consistency, every
 % command that creates article titles should call this command.
 \newcommand{\placetitle}[2]{
+    \clearpage
     \chapter[#1]{#2}
     \renewcommand{\and}{ /\ }
     \ifstrempty{\theauthor}{
