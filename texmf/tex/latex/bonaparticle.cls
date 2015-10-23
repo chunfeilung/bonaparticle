@@ -48,7 +48,7 @@
 \NeedsTeXFormat{LaTeX2e}
 
 \ProvidesClass{bonaparticle}[
-    2015/09/30
+    2015/10/23
     I definitely should've named this the magazine class.
 ]
 
@@ -153,7 +153,7 @@
     \renewcommand{\geometryright}      {1.4cm}
 
     \renewcommand{\croppaperheight}{250mm}
-    \renewcommand{\croppaperwidth} {188mm}
+    \renewcommand{\croppaperwidth} {180mm}
 }
 
 
