@@ -48,7 +48,7 @@
 \NeedsTeXFormat{LaTeX2e}
 
 \ProvidesClass{bonaparticle}[
-    2015/09/30
+    2015/10/23
     I definitely should've named this the magazine class.
 ]
 
@@ -153,7 +153,7 @@
     \renewcommand{\geometryright}      {1.4cm}
 
     \renewcommand{\croppaperheight}{250mm}
-    \renewcommand{\croppaperwidth} {188mm}
+    \renewcommand{\croppaperwidth} {180mm}
 }
 
 
@@ -1545,6 +1545,7 @@
 % Add a title to the page and the table of contents. For consistency, every
 % command that creates article titles should call this command.
 \newcommand{\placetitle}[2]{
+    \clearpage
     \chapter[#1]{#2}
     \renewcommand{\and}{ /\ }
     \ifstrempty{\theauthor}{
