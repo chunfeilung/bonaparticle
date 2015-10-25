@@ -48,7 +48,7 @@
 \NeedsTeXFormat{LaTeX2e}
 
 \ProvidesClass{bonaparticle}[
-    2015/10/23
+    2015/10/25
     I definitely should've named this the magazine class.
 ]
 
@@ -1652,7 +1652,7 @@
     \setkeys{makecovertitle}{#1}
 
     \coverart{#2}
-    ~\\
+
     \vspace{1cm}
     \placetitle{\thetitle}{
         \begin{center}
@@ -1686,12 +1686,14 @@
     
     \begin{lead}
         \begin{spacing}{1.1}
-            \fontsize{9}{11}%
+            \fontsize{12}{14}%
             \selectfont
             \color{\thecovertitleleadcolor}
             #3
         \end{spacing}
     \end{lead}
+
+    \vspace{.5cm}
     
     \newpage
 }
