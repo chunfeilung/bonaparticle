@@ -23,7 +23,7 @@ Bonaparticle is an amalgamation of “(Napoléon) Bonaparte” and “article”
 The first reasonably feature-complete and bug-free version isn’t expected until February 2016, so probably around then. If you are comfortable wading through LaTeX code, you can read the comments in `bonaparticle.cls` for now, or send me questions via email.
 
 ## License
-`bonaparticle.cls` is licensed under the [The MIT license](LICENSE.md).
+`bonaparticle.cls` and all included examples are licensed under the [The MIT license](LICENSE.md).
 
 ## Contacting the author
 If you have any questions about this project (or just want to say hi), you can contact me by sending an email to:
