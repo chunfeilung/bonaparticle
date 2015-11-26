@@ -1574,10 +1574,10 @@
 %  +-------------------------------------+
 \renewcommand{\maketitle}{
     \placetitle{\theshortenedtitle}{\thetitle}
-    \vspace{-3.6\baselineskip}
     {
         \Large
         \selectfont
+        \vspace{-2.8\baselineskip}
         \begin{spacing}{1.1}
             \raggedright
             \thesubtitle
