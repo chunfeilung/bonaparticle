@@ -48,7 +48,7 @@
 \NeedsTeXFormat{LaTeX2e}
 
 \ProvidesClass{bonaparticle}[
-    2015/10/25
+    2015/12/23
     I definitely should've named this the magazine class.
 ]
 
@@ -411,6 +411,7 @@
     \renewenvironment{document}{%
         \clearpage
         \endgroup
+        \begingroup % Don't let this article affect other articles
         \advance \article@nestinglevel 1\relax
         \ignorespaces
     }{%
@@ -418,6 +419,7 @@
             \expandafter\article@enddocument
         \else
             \advance \article@nestinglevel -1\relax
+            \endgroup
             \begingroup
             \endinput
         \fi
