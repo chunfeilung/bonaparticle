@@ -48,7 +48,7 @@
 \NeedsTeXFormat{LaTeX2e}
 
 \ProvidesClass{bonaparticle}[
-    2015/12/23
+    2015/12/24
     I definitely should've named this the magazine class.
 ]
 
@@ -582,7 +582,7 @@
 % This allows us to include graphics without the need to include the file
 % extension. This is useful if you need to convert image files from one format
 % to another (e.g. RGB to CMYK), and want to prioritize JPEGs.
-\DeclareGraphicsExtensions{.jpg,.pdf,.png}
+\DeclareGraphicsExtensions{.jpg,.png,.pdf}
 
 
 
