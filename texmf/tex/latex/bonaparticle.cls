@@ -1301,11 +1301,11 @@
 
 % Insert a full-page image as a background.
 
-%  +- Example -----------------------------+
-%  |                                       |
-%  |  \coverart{beautiful-teapot}{15}{15}  |
-%  |                                       |
-%  +---------------------------------------+
+%  +- Example ---------------------+
+%  |                               |
+%  |  \coverart{beautiful-teapot}  |
+%  |                               |
+%  +-------------------------------+
 \newcommand{\coverart}[1]{
     \AddToShipoutPicture*{
         \put(0,-10.5)
