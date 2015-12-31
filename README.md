@@ -14,6 +14,8 @@ You can view the source and output in the [examples/plain/](examples/plain/)  fo
 
 The [Vakidioot](https://www.a-eskwadraat.nl/Vereniging/Commissies/vakid/) is a student-run bi-monthly magazine published by [A–Eskwadraat, the study association for students in Physics, Mathematics, Computer Science, and Information Science at Utrecht University](https://www.a-eskwadraat.nl/). Coincidentally, the Vakidioot also serves as the main beta tester of the Bonaparticle class.
 
+An example of a Vakidioot article can be found in the [examples/vakidioot/](examples/vakidioot/) folder of this repository.
+
 ## Frequently asked questions
 
 #### Why “Bonaparticle”? How does one even pronounce that?
