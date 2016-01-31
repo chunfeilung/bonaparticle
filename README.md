@@ -32,3 +32,5 @@ If you have any questions about this project (or just want to say hi), you can c
 name  = 'chunfeilung'
 email = name[0] + name[4] + name[-4:] + '@acm.org'
 ```
+
+or simply [create a new issue](https://github.com/chunfeilung/bonaparticle/issues).
