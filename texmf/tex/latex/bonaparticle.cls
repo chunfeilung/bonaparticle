@@ -245,8 +245,9 @@
     booktabs,
   % For doing calculations
     calc,
-  % A more clever way to insert references to figures, tables, equations, etc.
-    cleveref,
+  % A more clever way to insert references to figures, tables, equations, etc.,
+  % but it seems to break \eqref, so I've commented this one out for now.
+  % cleveref,
   % Used for the color bar in the print version
     colortbl,
   % Better quotations
