@@ -695,8 +695,12 @@
 %    - - - - -
 % Other stuff.
 
-% Display non-breaking spaces as... spaces
-\DeclareUnicodeCharacter{00A0}{ }
+% Since XeTeX has good unicode support, we don't need to declare any characters
+\ifxetex
+\else
+	% Display non-breaking spaces as... spaces
+	\DeclareUnicodeCharacter{00A0}{ }
+\fi
 
 
 
