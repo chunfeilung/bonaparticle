@@ -48,7 +48,7 @@
 \NeedsTeXFormat{LaTeX2e}
 
 \ProvidesClass{bonaparticle}[
-    2015/12/24
+    2016/05/17
     I definitely should've named this the magazine class.
 ]
 
@@ -250,6 +250,8 @@
   % cleveref,
   % Used for the color bar in the print version
     colortbl,
+  % Allow users to add a copyright notice to an image using \copyrightbox
+    copyrightbox,
   % Better quotations
     csquotes,
   % More control over the presentation of itemize, description, and enumerate
