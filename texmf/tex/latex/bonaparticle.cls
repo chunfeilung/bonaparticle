@@ -142,8 +142,8 @@
 % so you can tweak font sizes so their visual sizes look right.
 % TODO: maybe just make the whole font selection process configurable,
 % since that is what I ended up doing in the Vakidioot class anyway.
-\renewcommand{\FontsizeChapter}{\fontsize{18}{20}}
-\renewcommand{\FontsizeSection}{\fontsize{11}{12}}
+\newcommand{\FontsizeChapter}{\fontsize{18}{20}}
+\newcommand{\FontsizeSection}{\fontsize{11}{12}}
 
 \DeclareOption{a4paper}{
     % Just use the values listed above
