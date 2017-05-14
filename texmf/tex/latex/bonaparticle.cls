@@ -978,7 +978,7 @@
     \protect\makebonaparticlefooters
 
     % This sets the distance between the header and the body text
-    \setlength{\headsep}{0.5cm}
+    \setlength{\headsep}{3 \baselineskip}
 }
 
 
@@ -993,7 +993,7 @@
     \protect\makebonaparticlefooters
 
     % This sets the distance between the header and the body text
-    \setlength{\headsep}{0.5cm}
+    \setlength{\headsep}{3 \baselineskip}
 
     % This sets the thickness of the line below the header
     \renewcommand{\headrulewidth}{0pt}
