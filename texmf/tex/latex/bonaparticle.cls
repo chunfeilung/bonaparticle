@@ -107,6 +107,8 @@
 % the bonaparticle class. Currently the a4paper is horribly broken however, and
 % to make matters worse, the class will assume that you'll want a4paper if you
 % don't explicitly tell it to use something different.
+% There is also an option bladnlsize for geometry that is somewhere in between.
+% If I did everything right, a5paper and bladnlsize should both work.
 %
 %  +- Example 1 (stupid example) ------------+
 %  |                                         |    This is a stupid example,
@@ -135,6 +137,13 @@
 \newcommand{\croppaperheight}{337mm}
 \newcommand{\croppaperwidth} {242mm}
 
+% Font sizes for various parts of the text.
+% Can be redeclared by any classes deriving from this one,
+% so you can tweak font sizes so their visual sizes look right.
+% TODO: maybe just make the whole font selection process configurable,
+% since that is what I ended up doing in the Vakidioot class anyway.
+\renewcommand{\FontsizeChapter}{\fontsize{18}{20}}
+\renewcommand{\FontsizeSection}{\fontsize{11}{12}}
 
 \DeclareOption{a4paper}{
     % Just use the values listed above
@@ -154,6 +163,29 @@
 
     \renewcommand{\croppaperheight}{250mm}
     \renewcommand{\croppaperwidth} {180mm}
+}
+
+\DeclareOption{bladnlsize}{
+    % Use these options for the page sizes used by BladNL
+    % They are scaled by 23% in each direction compared to A5,
+    % you might want to tweak this still...
+    \renewcommand{\geometrypaperheight}{258mm}
+    \renewcommand{\geometrypaperwidth} {183mm}
+    \renewcommand{\geometrytextheight} {196mm}
+    \renewcommand{\geometrytextwidth}  {148mm}
+    \renewcommand{\geometrytop}        {2.2cm}
+    \renewcommand{\geometrybottom}     {2.6cm}
+    \renewcommand{\geometryleft}       {1.7cm}
+    \renewcommand{\geometryright}      {1.7cm}
+
+    \renewcommand{\croppaperheight}{308mm}
+    \renewcommand{\croppaperwidth} {221mm}
+
+    % We also scale the font sizes so things should
+    % take up the same space as a5paper
+    % (except for rounding errors and a lot of cases I forgot about...)
+    \renewcommand{\FontsizeChapter}{\fontsize{22}{24}}
+    \renewcommand{\FontsizeSection}{\fontsize{13}{14}}
 }
 
 
@@ -758,7 +790,7 @@
         \thispagestyle{bonaparticlefirstpage}
         \raggedright
         \vspace{-5\baselineskip}
-        \fontsize{18}{20}
+        \FontsizeChapter
         \bfseries
         \selectfont
     }
@@ -773,7 +805,7 @@
     {
         \raggedright
         \vspace{-5\baselineskip}
-        \fontsize{18}{20}
+        \FontsizeChapter
         \bfseries
         \selectfont
     }
@@ -797,7 +829,7 @@
     {\section}[display]
     {
         \raggedright
-        \fontsize{11}{12}
+        \FontsizeSection
         \bfseries
         \color{\thegenrecolor}
         \selectfont
@@ -817,7 +849,7 @@
     {name=\section,numberless}[display]
     {
         \raggedright
-        \fontsize{11}{12}
+        \FontsizeSection
         \bfseries
         \color{\thegenrecolor}
         \selectfont
