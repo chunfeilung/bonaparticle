@@ -48,7 +48,7 @@
 \NeedsTeXFormat{LaTeX2e}
 
 \ProvidesClass{bonaparticle}[
-    2016/05/17
+    2017/05/14
     I definitely should've named this the magazine class.
 ]
 
@@ -107,6 +107,8 @@
 % the bonaparticle class. Currently the a4paper is horribly broken however, and
 % to make matters worse, the class will assume that you'll want a4paper if you
 % don't explicitly tell it to use something different.
+% There is also an option bladnlsize for geometry that is somewhere in between.
+% If I did everything right, a5paper and bladnlsize should both work.
 %
 %  +- Example 1 (stupid example) ------------+
 %  |                                         |    This is a stupid example,
@@ -135,6 +137,13 @@
 \newcommand{\croppaperheight}{337mm}
 \newcommand{\croppaperwidth} {242mm}
 
+% Font sizes for various parts of the text.
+% Can be redeclared by any classes deriving from this one,
+% so you can tweak font sizes so their visual sizes look right.
+% TODO: maybe just make the whole font selection process configurable,
+% since that is what I ended up doing in the Vakidioot class anyway.
+\newcommand{\FontsizeChapter}{\fontsize{18}{20}}
+\newcommand{\FontsizeSection}{\fontsize{11}{12}}
 
 \DeclareOption{a4paper}{
     % Just use the values listed above
@@ -154,6 +163,29 @@
 
     \renewcommand{\croppaperheight}{250mm}
     \renewcommand{\croppaperwidth} {180mm}
+}
+
+\DeclareOption{bladnlsize}{
+    % Use these options for the page sizes used by BladNL
+    % They are scaled by 23% in each direction compared to A5,
+    % you might want to tweak this still...
+    \renewcommand{\geometrypaperheight}{258mm}
+    \renewcommand{\geometrypaperwidth} {183mm}
+    \renewcommand{\geometrytextheight} {196mm}
+    \renewcommand{\geometrytextwidth}  {148mm}
+    \renewcommand{\geometrytop}        {2.2cm}
+    \renewcommand{\geometrybottom}     {2.6cm}
+    \renewcommand{\geometryleft}       {1.7cm}
+    \renewcommand{\geometryright}      {1.7cm}
+
+    \renewcommand{\croppaperheight}{308mm}
+    \renewcommand{\croppaperwidth} {221mm}
+
+    % We also scale the font sizes so things should
+    % take up the same space as a5paper
+    % (except for rounding errors and a lot of cases I forgot about...)
+    \renewcommand{\FontsizeChapter}{\fontsize{22}{24}}
+    \renewcommand{\FontsizeSection}{\fontsize{13}{14}}
 }
 
 
@@ -340,10 +372,20 @@
         polyglossia
     }
 \else
+  \ifluatex
+    \RequirePackage{
+        % Enables font loading for math. Also loads fontspec, which is used to
+        % load "normal" fonts
+        fontspec,
+        % A XeTeX man's babel package
+        polyglossia
+    }
+  \else
     \RequirePackage[utf8]{inputenc}
     % Make sure you load this package in your subclass with the correct set of
     % languages.
     % \RequirePackage[<language(s)>]{babel}
+  \fi
 \fi
 
 
@@ -585,7 +627,7 @@
 % This allows us to include graphics without the need to include the file
 % extension. This is useful if you need to convert image files from one format
 % to another (e.g. RGB to CMYK), and want to prioritize JPEGs.
-\DeclareGraphicsExtensions{.jpg,.png,.pdf}
+\DeclareGraphicsExtensions{.jpg,.png,.pdf,.eps}
 
 
 
@@ -697,11 +739,14 @@
 %    - - - - -
 % Other stuff.
 
-% Since XeTeX has good unicode support, we don't need to declare any characters
+% Since XeTeX has good unicode support, we don't do anything if it's running
 \ifxetex
 \else
-	% Display non-breaking spaces as... spaces
-	\DeclareUnicodeCharacter{00A0}{ }
+  \ifluatex
+  \else
+    % Display non-breaking spaces as... spaces
+    \DeclareUnicodeCharacter{00A0}{ }
+  \fi
 \fi
 
 
@@ -745,7 +790,7 @@
         \thispagestyle{bonaparticlefirstpage}
         \raggedright
         \vspace{-5\baselineskip}
-        \fontsize{18}{20}
+        \FontsizeChapter
         \bfseries
         \selectfont
     }
@@ -760,7 +805,7 @@
     {
         \raggedright
         \vspace{-5\baselineskip}
-        \fontsize{18}{20}
+        \FontsizeChapter
         \bfseries
         \selectfont
     }
@@ -784,7 +829,7 @@
     {\section}[display]
     {
         \raggedright
-        \fontsize{11}{12}
+        \FontsizeSection
         \bfseries
         \color{\thegenrecolor}
         \selectfont
@@ -804,7 +849,7 @@
     {name=\section,numberless}[display]
     {
         \raggedright
-        \fontsize{11}{12}
+        \FontsizeSection
         \bfseries
         \color{\thegenrecolor}
         \selectfont
@@ -933,7 +978,7 @@
     \protect\makebonaparticlefooters
 
     % This sets the distance between the header and the body text
-    \setlength{\headsep}{0.5cm}
+    \setlength{\headsep}{3 \baselineskip}
 }
 
 
@@ -948,7 +993,7 @@
     \protect\makebonaparticlefooters
 
     % This sets the distance between the header and the body text
-    \setlength{\headsep}{0.5cm}
+    \setlength{\headsep}{3 \baselineskip}
 
     % This sets the thickness of the line below the header
     \renewcommand{\headrulewidth}{0pt}
