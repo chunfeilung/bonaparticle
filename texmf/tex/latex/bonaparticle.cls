@@ -48,7 +48,7 @@
 \NeedsTeXFormat{LaTeX2e}
 
 \ProvidesClass{bonaparticle}[
-    2016/05/17
+    2017/05/14
     I definitely should've named this the magazine class.
 ]
 
@@ -340,10 +340,20 @@
         polyglossia
     }
 \else
+  \ifluatex
+    \RequirePackage{
+        % Enables font loading for math. Also loads fontspec, which is used to
+        % load "normal" fonts
+        fontspec,
+        % A XeTeX man's babel package
+        polyglossia
+    }
+  \else
     \RequirePackage[utf8]{inputenc}
     % Make sure you load this package in your subclass with the correct set of
     % languages.
     % \RequirePackage[<language(s)>]{babel}
+  \fi
 \fi
 
 
@@ -697,11 +707,14 @@
 %    - - - - -
 % Other stuff.
 
-% Since XeTeX has good unicode support, we don't need to declare any characters
+% Since XeTeX has good unicode support, we don't do anything if it's running
 \ifxetex
 \else
-	% Display non-breaking spaces as... spaces
-	\DeclareUnicodeCharacter{00A0}{ }
+  \ifluatex
+  \else
+    % Display non-breaking spaces as... spaces
+    \DeclareUnicodeCharacter{00A0}{ }
+  \fi
 \fi
 
 
