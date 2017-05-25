@@ -1326,7 +1326,7 @@
 \newsavebox{\coloredbox}
 \newenvironment{infobox}{
     \begin{lrbox}{\coloredbox}
-        \begin{minipage}{.98\textwidth}
+        \begin{minipage}{.98\linewidth}
             \vskip10pt
             \leftskip10pt\rightskip10pt
             \color{white}
