@@ -316,8 +316,6 @@
     listings,
   % Support for multi-column articles.
     multicol,
-  % Fixes some of the issues with two-column articles 
-    fix2col,
   % We don't want no \noindent
     parskip,
   % For including full-page centered PDFs and raster images
@@ -742,11 +740,11 @@
 % Since XeTeX has good unicode support, we don't do anything if it's running
 \ifxetex
 \else
-  \ifluatex
-  \else
-    % Display non-breaking spaces as... spaces
-    \DeclareUnicodeCharacter{00A0}{ }
-  \fi
+    \ifluatex
+    \else
+        % Display non-breaking spaces as... spaces
+        \DeclareUnicodeCharacter{00A0}{ }
+    \fi
 \fi
 
 
