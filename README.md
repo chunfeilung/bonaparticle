@@ -21,9 +21,6 @@ An example of a Vakidioot article can be found in the [examples/vakidioot/](exam
 #### Why “Bonaparticle”? How does one even pronounce that?
 Bonaparticle is an amalgamation of “(Napoléon) Bonaparte” and “article”. The Bonaparticle class is mainly intended for magazine _articles_ and the author of the class sometimes [plays as France in Sid Meier’s Civilization V](http://civilization.wikia.com/wiki/Napoleon_(Civ5)), but other than that, there’s no real reason for naming it Bonaparticle. Other names that were considered are “PolyTeX” (which would’ve been nice if this was developed at a [polytechnic university](http://en.wikipedia.org/wiki/Institute_of_technology), but it’s not), “CalTeX” (which would’ve been nice if this was developed at [Caltech](http://en.wikipedia.org/wiki/California_Institute_of_Technology), but that isn’t the case either), and the very generic and unassuming name “magazine”.
 
-#### When can we expect some real documentation?
-The first reasonably feature-complete and bug-free version isn’t expected until April 2016, so probably around then. If you are comfortable wading through LaTeX code, you can read the comments in `bonaparticle.cls` for now, or send me questions via email.
-
 ## License
 `bonaparticle.cls` and all included examples are licensed under the [The MIT license](LICENSE.md).
 

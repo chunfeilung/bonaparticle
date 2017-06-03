@@ -316,8 +316,6 @@
     listings,
   % Support for multi-column articles.
     multicol,
-  % Fixes some of the issues with two-column articles 
-    fix2col,
   % We don't want no \noindent
     parskip,
   % For including full-page centered PDFs and raster images
@@ -371,21 +369,23 @@
         % A XeTeX man's babel package
         polyglossia
     }
+    \setdefaultlanguage{english}
 \else
-  \ifluatex
-    \RequirePackage{
-        % Enables font loading for math. Also loads fontspec, which is used to
-        % load "normal" fonts
-        fontspec,
-        % A XeTeX man's babel package
-        polyglossia
-    }
-  \else
-    \RequirePackage[utf8]{inputenc}
-    % Make sure you load this package in your subclass with the correct set of
-    % languages.
-    % \RequirePackage[<language(s)>]{babel}
-  \fi
+    \ifluatex
+        \RequirePackage{
+            % Enables font loading for math. Also loads fontspec, which is used to
+            % load "normal" fonts
+            fontspec,
+            % A XeTeX man's babel package
+            polyglossia
+        }
+        \setdefaultlanguage{english}
+    \else
+        \RequirePackage[utf8]{inputenc}
+        % Make sure you load this package in your subclass with the correct set of
+        % languages.
+        % \RequirePackage[<language(s)>]{babel}
+    \fi
 \fi
 
 
@@ -742,11 +742,11 @@
 % Since XeTeX has good unicode support, we don't do anything if it's running
 \ifxetex
 \else
-  \ifluatex
-  \else
-    % Display non-breaking spaces as... spaces
-    \DeclareUnicodeCharacter{00A0}{ }
-  \fi
+    \ifluatex
+    \else
+        % Display non-breaking spaces as... spaces
+        \DeclareUnicodeCharacter{00A0}{ }
+    \fi
 \fi
 
 
@@ -1629,13 +1629,11 @@
 \renewcommand{\maketitle}{
     \placetitle{\theshortenedtitle}{\thetitle}
     {
+        \raggedright
         \Large
         \selectfont
-        \vspace{-2.8\baselineskip}
-        \begin{spacing}{1.1}
-            \raggedright
-            \thesubtitle
-        \end{spacing}
+        \vspace{-2\baselineskip}
+        \thesubtitle
         \vspace{.5\baselineskip}
     }
 
@@ -1645,7 +1643,6 @@
         \theauthor
         \vspace{.5\baselineskip}
     }
-
 }
 
 
