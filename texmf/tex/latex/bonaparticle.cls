@@ -372,20 +372,20 @@
         polyglossia
     }
 \else
-  \ifluatex
-    \RequirePackage{
-        % Enables font loading for math. Also loads fontspec, which is used to
-        % load "normal" fonts
-        fontspec,
-        % A XeTeX man's babel package
-        polyglossia
-    }
-  \else
-    \RequirePackage[utf8]{inputenc}
-    % Make sure you load this package in your subclass with the correct set of
-    % languages.
-    % \RequirePackage[<language(s)>]{babel}
-  \fi
+    \ifluatex
+        \RequirePackage{
+            % Enables font loading for math. Also loads fontspec, which is used to
+            % load "normal" fonts
+            fontspec,
+            % A XeTeX man's babel package
+            polyglossia
+        }
+    \else
+        \RequirePackage[utf8]{inputenc}
+        % Make sure you load this package in your subclass with the correct set of
+        % languages.
+        % \RequirePackage[<language(s)>]{babel}
+    \fi
 \fi
 
 
@@ -1629,13 +1629,11 @@
 \renewcommand{\maketitle}{
     \placetitle{\theshortenedtitle}{\thetitle}
     {
+        \raggedright
         \Large
         \selectfont
-        \vspace{-2.8\baselineskip}
-        \begin{spacing}{1.1}
-            \raggedright
-            \thesubtitle
-        \end{spacing}
+        \vspace{-2\baselineskip}
+        \thesubtitle
         \vspace{.5\baselineskip}
     }
 
@@ -1645,7 +1643,6 @@
         \theauthor
         \vspace{.5\baselineskip}
     }
-
 }
 
 
