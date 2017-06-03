@@ -369,6 +369,7 @@
         % A XeTeX man's babel package
         polyglossia
     }
+    \setdefaultlanguage{english}
 \else
     \ifluatex
         \RequirePackage{
@@ -378,6 +379,7 @@
             % A XeTeX man's babel package
             polyglossia
         }
+        \setdefaultlanguage{english}
     \else
         \RequirePackage[utf8]{inputenc}
         % Make sure you load this package in your subclass with the correct set of
