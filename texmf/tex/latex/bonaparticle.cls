@@ -48,7 +48,7 @@
 \NeedsTeXFormat{LaTeX2e}
 
 \ProvidesClass{bonaparticle}[
-    2017/05/14
+    2017/09/16
     I definitely should've named this the magazine class.
 ]
 
@@ -346,9 +346,13 @@
     wallpaper,
   % For inserting floating images
     wrapfig,
-  % Hyperlink support. You will want to load this package as late as possible.
-    hyperref
 }
+
+% Hyperlink support. You will want to load this package as late as possible.
+\RequirePackage[
+    hidelinks
+]{hyperref}
+
 
 
 
@@ -524,26 +528,6 @@
 % pleasant to look at (and read).
 \setlength{\columnsep}{15pt}
 
-
-
-
-%    C o l o r s
-%    - - - - - -
-% Colors make everyone happy!
-
-
-% Make hyperlinks invisible to the user. This is absolutely horrible from a UX
-% point of view, but it ensures that the online PDF version will look exactly
-% the same as the print version (give or take 3 millimeters due to inprecise
-% cutting of paper sheets). I strongly advise converting your TeX articles to
-% either XML+XSLT or HTML+CSS if you want to publish an online version.
-\hypersetup{
-    colorlinks,
-    citecolor=black,
-    filecolor=black,
-    linkcolor=black,
-    urlcolor=black
-}
 
 
 
